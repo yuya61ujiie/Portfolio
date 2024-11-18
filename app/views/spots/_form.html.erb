@@ -1,4 +1,4 @@
-<%= form_with(model: spot) do |form| %>
+<%= form_with(model: spot) do |f| %>
   <% if spot.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
@@ -11,7 +11,22 @@
     </div>
   <% end %>
 
+  <div class="mb-3">
+    <%= f.label :spot_name %>
+    <%= f.text_field :spot_name, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :category %>
+    <%= f.text_field :category, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :address %>
+    <%= f.text_field :address, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :body %>
+    <%= f.text_area :category, class: "form-control" %>
   <div>
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
