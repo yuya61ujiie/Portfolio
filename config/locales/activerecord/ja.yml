@@ -8,3 +8,10 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード確認
+  enum:
+    spot:
+      category:
+        cafe: カフェ
+        work_space: ワークスペース
+        karaoke: カラオケ
+        other: その他

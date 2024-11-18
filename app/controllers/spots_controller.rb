@@ -65,6 +65,6 @@ class SpotsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spot_params
-      params.require(:spot).permit(:spot_name, :category, :address, :body)
+      params.require(:spot).permit(:spot_name, :category, :address, :body, :image)
     end
 end

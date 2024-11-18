@@ -17,7 +17,7 @@
   </div>
   <div class="mb-3">
     <%= f.label :category %>
-    <%= f.text_field :category, class: "form-control" %>
+    <%= f.select :category, Spot.categories.keys.map { |k| [t("enum.spot.category.#{k}"), k ]}, prompt: "カテゴリを選択してください", class: "form-control" %>
   </div>
   <div class="mb-3">
     <%= f.label :address %>
@@ -26,6 +26,11 @@
   <div class="mb-3">
     <%= f.label :body %>
     <%= f.text_area :category, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :image %>
+    <%= f.file_field :image, accept: 'image/*' %>
+  </div>
   <div>
     <%= f.submit %>
   </div>
