@@ -21,7 +21,7 @@ class SpotsController < ApplicationController
 
   # POST /spots or /spots.json
   def create
-    @spot = Spot.new(spot_params)
+    @spot = current_user.spots.build(spot_params)
 
     respond_to do |format|
       if @spot.save
