@@ -8,5 +8,4 @@ class Spot < ApplicationRecord
   has_one_attached :image
 
   enum category: { cafe: 1, work_space: 2, karaoke: 3, other: 4 }
-
 end
