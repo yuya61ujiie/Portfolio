@@ -1,7 +1,36 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @spot %>
 
-<div>
-  <%= link_to "Back to spots", spots_path %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-7 offset-2">
+      <h1><%= @spot.spot_name %></h1>
+    </div>
+    <div class="col-4">
+      <%= image_tag @spot.image, width: "300", height: "200", class: "card-img-top img-fluid" %>
+    </div>
+    <div class="col-8">
+      <% if current_user.own?(@spot) %>
+        <div class='row justify-content-end'>
+          <div class='col-1'>
+            <%= link_to edit_spot_path(@spot), id: "button-edit-#{@spot.id}" do %>
+              <button type="button" class="btn btn-primary bi bi-pencil-fill"></button>
+            <% end %>
+          </div>
+          <div class='col-1'>
+            <%= link_to spot_path(@spot), id: "button-delete-#{@spot.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
+              <button type="button" class="btn btn-danger bi bi-trash3-fill"></button>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><%= "カテゴリ：#{@spot.category}" %></li>
+        <li class="list-group-item"><%= "投稿者： #{@spot.user.name}" %></li>
+        <li class="list-group-item"><%= l @spot.created_at, format: :long %></li>
+        <li class="list-group-item"><%= "#{@spot.body}" %></li>
+      </ul>
+    </div>
+  </div>
 </div>
