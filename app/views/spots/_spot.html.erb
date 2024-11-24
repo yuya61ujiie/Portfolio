@@ -1,2 +1,36 @@
 <div id="<%= dom_id spot %>">
+  <div class="container pt-5">
+    <div class="row mb-3">
+      <div class="col-lg-8 offset-lg-2">
+        <article class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                <%= image_tag spot.image, width: "300", height: "300", class: "card-img-top img-fluid" %>
+              </div>
+              <div class="col-md-9">
+                <h3 style="display: inline;"><%= link_to spot.spot_name, spot_path(spot) %></h3>
+                <% if current_user.own?(spot) %>
+                  <div class='d-flex justify-content-end'>
+                    <%= link_to edit_spot_path(spot), id: "button-edit-#{spot.id}" do %>
+                      <button type="button" class="btn btn-primary bi bi-pencil-fill"></button>
+                    <% end %>
+                    <%= link_to spot_path(spot), id: "button-delete-#{spot.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
+                      <button type="button" class="btn btn-danger bi bi-trash3-fill"></button>
+                    <% end %>
+                  </div>
+                <% end %>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><%= "#{spot.category}" %></li>
+                  <li class="list-group-item"><%= "by #{spot.user.name}" %></li>
+                  <li class="list-group-item"><%= l spot.created_at, format: :long %></li>
+                  <li class="list-group-item"><%= "#{spot.body}" %></li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -2,14 +2,11 @@
 
 <% content_for :title, "Spots" %>
 
-<h1>Spots</h1>
+<h1>スポット一覧</h1>
 
 <div id="spots">
   <% @spots.each do |spot| %>
     <%= render spot %>
-    <p>
-      <%= link_to "Show this spot", spot %>
-    </p>
   <% end %>
 </div>
 

@@ -4,4 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
   has_many :spots, dependent: :destroy
+
+  def own?(object)
+    id == object&.user_id
+  end
 end
