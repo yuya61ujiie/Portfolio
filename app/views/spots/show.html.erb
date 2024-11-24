@@ -1,7 +1,3 @@
-<p style="color: green"><%= notice %></p>
-
-
-
 <div class="container">
   <div class="row">
     <div class="col-7 offset-2">
@@ -11,7 +7,7 @@
       <%= image_tag @spot.image, width: "300", height: "200", class: "card-img-top img-fluid" %>
     </div>
     <div class="col-8">
-      <% if current_user.own?(@spot) %>
+      <% if user_signed_in? && current_user.own?(@spot) %>
         <div class='row justify-content-end'>
           <div class='col-1'>
             <%= link_to edit_spot_path(@spot), id: "button-edit-#{@spot.id}" do %>
