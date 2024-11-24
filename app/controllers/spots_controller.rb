@@ -1,5 +1,6 @@
 class SpotsController < ApplicationController
-  before_action :set_spot, only: %i[ show edit update destroy ]
+  before_action :set_spot, only: %i[ show update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
   # GET /spots or /spots.json
   def index
@@ -17,6 +18,7 @@ class SpotsController < ApplicationController
 
   # GET /spots/1/edit
   def edit
+    @spot = current_user.spots.find(params[:id])
   end
 
   # POST /spots or /spots.json
