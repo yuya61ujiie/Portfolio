@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   root "static_pages#top"
   resources :spots
   devise_for :users
