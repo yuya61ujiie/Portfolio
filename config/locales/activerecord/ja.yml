@@ -21,3 +21,15 @@ ja:
         work_space: ワークスペース
         karaoke: カラオケ
         other: その他
+    comment:
+      scene:
+        pc_work: PC作業
+        manual_work: 手作業
+        reading: 読書
+      rating:
+        0.5: "星0.5"
+        1.0: "星1.0"
+        1.5: 星1.5
+        2.0: 星2.0
+        2.5: 星2.5
+        3.0: 星3.0

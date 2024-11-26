@@ -1,4 +1,4 @@
-<%= form_with model: comment, url: spot_comments_path(spot) do |form| %>
+<%= form_with model: comment, url: spot_comments_path(spot) do |f| %>
   <% if comment.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -11,7 +11,32 @@
     </div>
   <% end %>
 
+  <div class="mb-3">
+    <%= f.label :scene %>
+    <%= f.select :scene, Comment.scenes.keys.map { |k| [t("enum.comment.scene.#{k}"), k ]}, prompt: "目的を選択してください", class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :start_at %>
+    <%= f.time_field :start_at, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :finish_at %>
+    <%= f.time_field :fhinish_at, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :rating %>
+    <%= f.select :rating, Comment.ratings.keys.map { |k| [t("enum.comment.rating.#{k}"), k ]}, prompt: "おすすめ度を選択してください", class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+
   <div>
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>
