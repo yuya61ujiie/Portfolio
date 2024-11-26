@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_spot
 
   # GET /comments or /comments.json
   def index
@@ -12,7 +13,6 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @spot = Spot.find(params[:spot_id])
     @comment = Comment.new
   end
 
@@ -62,6 +62,10 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+
+    def set_spot
+      @spot = Spot.find(params[:spot_id])
     end
 
     # Only allow a list of trusted parameters through.
