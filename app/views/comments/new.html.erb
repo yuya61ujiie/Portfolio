@@ -1,11 +1,11 @@
-<% content_for :title, "New comment" %>
+<% content_for :title, "コメント投稿" %>
 
-<h1>New comment</h1>
+<h1>コメント投稿</h1>
 
 <%= render "form", comment: @comment, spot: @spot %>
 
 <br>
 
 <div>
-  <%= link_to "Back to comments", spot_comments_path %>
+  <%= link_to "コメント一覧", spot_comments_path %>
 </div>
