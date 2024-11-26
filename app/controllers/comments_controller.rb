@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
+    @spot = Spot.find(params[:spot_id])
     @comment = Comment.new
   end
 
