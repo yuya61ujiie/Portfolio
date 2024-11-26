@@ -14,6 +14,6 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :spot
 
-  enum :scene { pc_work: 0, manual_work: 1, reading: 2 }
-  enum :rating { 0.5: 0, 1.0: 1, 1.5: 2, 2.0: 3, 2.5: 4, 3.0: 5 }
+  enum scene: { pc_work: 0, manual_work: 1, reading: 2 }
+  enum rating: { "0.5": 0, "1.0": 1, "1.5": 2, "2.0": 3, "2.5": 4, "3.0": 5 }
 end
