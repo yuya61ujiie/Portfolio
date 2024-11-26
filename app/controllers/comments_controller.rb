@@ -70,6 +70,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.fetch(:comment, {})
+      params.require(:comment).permit(:scene, :start_at, :finish_at, :rating, :title, :body).merge(user_id: current_user.id, spot_id: params[:spot_id])
     end
 end
