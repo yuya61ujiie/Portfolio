@@ -3,7 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
 
-  has_many :spots, dependent: :destroy
+  has_many :spots
+  has_many :comments
 
   def own?(object)
     id == object&.user_id

@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <%= form_with model: comment, url: spot_comments_path(spot) do |f| %>
+      <% if comment.errors.any? %>
+        <div class="col-6 mb-4 mx-auto", style="color: red">
+          <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+            <% comment.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="col-6 mb-1 mx-auto">
+        <%= f.label :scene %>
+      </div>
+      <div class="col-6 mb-4 mx-auto">
+        <%= f.select :scene, Comment.scenes.keys.map { |k| [t("enum.comment.scene.#{k}"), k ]}, prompt: "目的を選択してください", class: "form-control" %>
+      </div>
+      <div class="col-6 mb-4 mx-auto">
+        <%= f.label :start_at %>
+        <%= f.time_field :start_at, class: "form-control" %>
+      </div>
+      <div class="col-6 mb-4 mx-auto">
+        <%= f.label :finish_at %>
+        <%= f.time_field :finish_at, class: "form-control" %>
+      </div>
+      <div class="col-6 mb-1 mx-auto">
+        <%= f.label :rating %>
+      </div>
+      <div class="col-6 mb-4 mx-auto">
+        <%= f.select :rating, [["&#11088;".html_safe, 1],["&#11088;&#11088;".html_safe, 2], ["&#11088;&#11088;&#11088;".html_safe, 3], ["&#11088;&#11088;&#11088;&#11088;".html_safe, 4], ["&#11088;&#11088;&#11088;&#11088;&#11088;".html_safe, 5]], class: "form-control" %>
+      </div>
+      <div class="col-6 mb-4 mx-auto">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
+      <div class="col-6 mb-4 mx-auto">
+        <%= f.label :body %>
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+
+      <div class="col-6 mb-2 mx-auto text-center">
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<% content_for :title, "コメント投稿" %>
+
+<h1 class="text-center mb-4">コメント投稿</h1>
+
+<%= render "form", comment: @comment, spot: @spot %>
+
+<br>
+
+<div class="text-center mb-2">
+  <%= link_to "コメント一覧", spot_comments_path %>
+</div>

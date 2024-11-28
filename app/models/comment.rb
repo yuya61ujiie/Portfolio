@@ -1,0 +1,13 @@
+class Comment < ApplicationRecord
+  validates :scene, presence: true
+  validates :start_at, presence: true
+  validates :finish_at, presence: true
+  validates :rating, presence: true
+  validates :title, presence: true, length: { maximum: 255 }
+  validates :body, presence: true, length: { maximum: 65_535 }
+
+  belongs_to :user
+  belongs_to :spot
+
+  enum scene: { pc_work: 0, manual_work: 1, reading: 2 }
+end

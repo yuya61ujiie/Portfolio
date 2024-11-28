@@ -14,6 +14,13 @@ ja:
         address: 住所
         body: 説明
         image: 画像
+      comment:
+        scene: 利用シーン
+        start_at: 開始時間
+        finish_at: 終了時間
+        rating: おすすめ度
+        title: タイトル
+        body: 本文
   enum:
     spot:
       category:
@@ -21,3 +28,8 @@ ja:
         work_space: ワークスペース
         karaoke: カラオケ
         other: その他
+    comment:
+      scene:
+        pc_work: PC作業
+        manual_work: 手作業
+        reading: 読書
