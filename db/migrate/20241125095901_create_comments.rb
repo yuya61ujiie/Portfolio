@@ -4,6 +4,7 @@ class CreateComments < ActiveRecord::Migration[7.2]
       t.references :user, foreign_key: true
       t.references :spot, foreign_key: true
       t.integer :scene, null: false
+      t.integer :rating, null: false
       t.time :start_at, null: false
       t.time :finish_at, null: false
       t.string :title, null: false

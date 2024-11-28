@@ -43,6 +43,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_25_095901) do
     t.bigint "user_id"
     t.bigint "spot_id"
     t.integer "scene", null: false
+    t.integer "rating", null: false
     t.time "start_at", null: false
     t.time "finish_at", null: false
     t.string "title", null: false
