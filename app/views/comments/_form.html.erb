@@ -25,7 +25,7 @@
   </div>
   <div class="mb-3">
     <%= f.label :rating %>
-    <%= f.select :rating, Comment.ratings.keys.map { |k| [t("enum.comment.rating.#{k}"), k ]}, prompt: "おすすめ度を選択してください", class: "form-control" %>
+    <%= f.select :rating, [["&#11088;".html_safe, 1],["&#11088;&#11088;".html_safe, 2], ["&#11088;&#11088;&#11088;".html_safe, 3], ["&#11088;&#11088;&#11088;&#11088;".html_safe, 4], ["&#11088;&#11088;&#11088;&#11088;&#11088;".html_safe, 5]], class: "form-control" %>
   </div>
   <div class="mb-3">
     <%= f.label :title %>
