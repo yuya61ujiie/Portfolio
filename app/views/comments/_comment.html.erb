@@ -9,7 +9,7 @@
           <li class="list-group-item"><%= "#{comment.user.name}" %></li>
           <li class="list-group-item"><%= "#{comment.scene_i18n}" %></li>
           <li class="list-group-item"><%= "#{comment.start_at.strftime( "%H:%M" )} - #{comment.finish_at.strftime( "%H:%M" )}" %></li>
-          <li class="list-group-item"><%= "#{comment.rating}" %></li>
+          <li class="list-group-item"><%= "#{comment.rating_i18n}".html_safe %></li>
           <li class="list-group-item"><%= "#{comment.title}" %></li>
           <li class="list-group-item"><%= "#{comment.body}" %></li>
         </ul>

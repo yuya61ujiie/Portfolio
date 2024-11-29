@@ -10,4 +10,5 @@ class Comment < ApplicationRecord
   belongs_to :spot
 
   enum scene: { pc_work: 0, manual_work: 1, reading: 2 }
+  enum rating: { star_1: 1, star_2: 2, star_3: 3, star_4: 4, star_5: 5 }
 end
