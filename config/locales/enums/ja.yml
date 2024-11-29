@@ -1,0 +1,19 @@
+ja:
+  enums:
+    spot:
+      category:
+        cafe: カフェ
+        work_space: ワークスペース
+        karaoke: カラオケ
+        other: その他
+    comment:
+      scene:
+        pc_work: PC作業
+        manual_work: 手作業
+        reading: 読書
+      rating:
+        star_1: ☆
+        star_2: ☆☆
+        star_3: ☆☆☆
+        star_4: ☆☆☆☆
+        star_5: ☆☆☆☆☆

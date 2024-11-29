@@ -21,15 +21,3 @@ ja:
         rating: おすすめ度
         title: タイトル
         body: 本文
-  enum:
-    spot:
-      category:
-        cafe: カフェ
-        work_space: ワークスペース
-        karaoke: カラオケ
-        other: その他
-    comment:
-      scene:
-        pc_work: PC作業
-        manual_work: 手作業
-        reading: 読書

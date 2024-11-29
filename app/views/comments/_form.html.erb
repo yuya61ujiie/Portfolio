@@ -17,7 +17,7 @@
         <%= f.label :scene %>
       </div>
       <div class="col-6 mb-4 mx-auto">
-        <%= f.select :scene, Comment.scenes.keys.map { |k| [t("enum.comment.scene.#{k}"), k ]}, prompt: "目的を選択してください", class: "form-control" %>
+        <%= f.select :scene, Comment.scenes.keys.map { |k| [t("enums.comment.scene.#{k}"), k ]}, prompt: "目的を選択してください", class: "form-control" %>
       </div>
       <div class="col-6 mb-4 mx-auto">
         <%= f.label :start_at %>
@@ -31,7 +31,7 @@
         <%= f.label :rating %>
       </div>
       <div class="col-6 mb-4 mx-auto">
-        <%= f.select :rating, [["&#11088;".html_safe, 1],["&#11088;&#11088;".html_safe, 2], ["&#11088;&#11088;&#11088;".html_safe, 3], ["&#11088;&#11088;&#11088;&#11088;".html_safe, 4], ["&#11088;&#11088;&#11088;&#11088;&#11088;".html_safe, 5]], class: "form-control" %>
+        <%= f.select :rating, Comment.ratings.keys.map { |k| [t("enums.comment.rating.#{k}"), k ]}, class: "form-control" %>
       </div>
       <div class="col-6 mb-4 mx-auto">
         <%= f.label :title %>
