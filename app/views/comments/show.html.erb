@@ -1,6 +1,6 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @comment %>
+<%= render partial: 'comment', locals: { comment: @comment, spot: @spot } %>
 
 <div>
   <%= link_to "Edit this comment", edit_comment_path(@comment) %> |
