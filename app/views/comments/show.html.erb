@@ -1,6 +1,46 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render partial: 'comment', locals: { comment: @comment, spot: @spot } %>
+<div id="<%= dom_id @comment %>">
+  <div class="container">
+    <div class="row">
+      <div class="col-7 mx-auto text-center">
+        <h2><%= "#{@comment.title}" %></h2>
+      </div>
+      <div class="col-8 mx-auto">
+        <table class="table table-light table-striped">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 20%"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="text-center">投稿者</th>
+              <td><%= "#{@comment.user.name}" %></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-center">利用シーン</th>
+              <td><%= "#{@comment.scene_i18n}" %></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-center">利用時間</th>
+              <td><%= "#{@comment.start_at.strftime( "%H:%M" )} - #{@comment.finish_at.strftime( "%H:%M" )}" %></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-center">おすすめ度</th>
+              <td><%= "#{@comment.rating_i18n}".html_safe %></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-center">本文</th>
+              <td><%= "#{@comment.body}" %></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div>
   <%= link_to "Edit this comment", edit_comment_path(@comment) %> |
