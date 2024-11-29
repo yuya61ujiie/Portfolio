@@ -2,17 +2,43 @@
   <div class="container">
     <div class="row">
       <div class="col-7 mx-auto text-center">
-        <h2><%= "#{comment.spot.spot_name}"%></h2>
+        <h2><%= link_to comment.spot.spot_name, comment_path(comment) %></h2>
       </div>
       <div class="col-6 mx-auto">
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item"><%= "#{comment.user.name}" %></li>
-          <li class="list-group-item"><%= "#{comment.scene_i18n}" %></li>
-          <li class="list-group-item"><%= "#{comment.start_at.strftime( "%H:%M" )} - #{comment.finish_at.strftime( "%H:%M" )}" %></li>
-          <li class="list-group-item"><%= "#{comment.rating_i18n}".html_safe %></li>
-          <li class="list-group-item"><%= "#{comment.title}" %></li>
-          <li class="list-group-item"><%= "#{comment.body}" %></li>
-        </ul>
+        <table class="table table-sm table-light table-striped">
+          <thead>
+            <tr>
+              <th scope="col" style="width: 20%"></th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">投稿者</th>
+              <td><%= "#{comment.user.name}" %></td>
+            </tr>
+            <tr>
+              <th scope="row">利用シーン</th>
+              <td><%= "#{comment.scene_i18n}" %></td>
+            </tr>
+            <tr>
+              <th scope="row">利用時間</th>
+              <td><%= "#{comment.start_at.strftime( "%H:%M" )} - #{comment.finish_at.strftime( "%H:%M" )}" %></td>
+            </tr>
+            <tr>
+              <th scope="row">おすすめ度</th>
+              <td><%= "#{comment.rating_i18n}".html_safe %></td>
+            </tr>
+            <tr>
+              <th scope="row">タイトル</th>
+              <td><%= "#{comment.title}" %></td>
+            </tr>
+            <tr>
+              <th scope="row">本文</th>
+              <td><%= "#{comment.body}" %></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
