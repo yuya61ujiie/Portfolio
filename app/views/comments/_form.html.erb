@@ -31,7 +31,7 @@
         <%= f.label :rating %>
       </div>
       <div class="col-6 mb-4 mx-auto">
-        <%= f.select :rating, Comment.ratings.keys.map { |k| [t("enums.comment.rating.#{k}").html_safe, k ]}, class: "form-control" %>
+        <%= f.select :rating, Comment.ratings.keys.map { |k| [t("enums.comment.rating.#{k}"), k ]}, class: "form-control" %>
       </div>
       <div class="col-6 mb-4 mx-auto">
         <%= f.label :title %>
