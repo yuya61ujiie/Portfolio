@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_comment, only: %i[ show update destroy ]
   before_action :set_spot, only: %i[ index new create ]
   before_action :authenticate_user!, only: %i[ new create edit update destroy ]
 
@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    @comment = current_user.comments.find(params[:id])
   end
 
   # POST /comments or /comments.json
@@ -38,6 +39,8 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
+    @spot = @comment.spot
+
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to @comment, notice: "Comment was successfully updated." }
