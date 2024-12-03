@@ -9,10 +9,10 @@
       </div>
       <div class="col-2 mx-auto">
         <% if user_signed_in? && current_user.own?(@comment) %>
-          <%= link_to edit_spot_comment_path(@comment), id: "button-edit-#{@comment.id}" do %>
+          <%= link_to edit_spot_comment_path(@spot, @comment) do %>
             <button type="button" class="btn btn-primary bi bi-pencil-fill"></button>
           <% end %>
-          <%= link_to spot_comment_path(@comment), id: "button-delete-#{@comment.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
+          <%= link_to spot_comment_path(@spot, @comment), data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
             <button type="button" class="btn btn-danger bi bi-trash3-fill"></button>
           <% end %>
         <% end %>
