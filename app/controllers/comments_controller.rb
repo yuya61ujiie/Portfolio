@@ -39,7 +39,6 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1 or /comments/1.json
   def update
-
     respond_to do |format|
       if @comment.update(comment_params)
         format.html { redirect_to spot_comment_path(@spot, @comment), notice: "Comment was successfully updated." }
