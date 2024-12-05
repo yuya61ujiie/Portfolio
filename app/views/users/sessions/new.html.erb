@@ -5,7 +5,7 @@
     </div>
 
     <%= form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f| %>
-      <div class="col-4 mb-2 mx-auto">
+      <div class="col-4 mb-3 mx-auto">
         <%= f.label :email %>
         <%= f.email_field :email, class: "form-control" %>
       </div>
@@ -26,9 +26,5 @@
         <%= f.submit "ログイン" %>
       </div>
     <% end %>
-
-    <div class="col-6 mb-4 mx-auto">
-      <%= render "users/shared/links" %>
-    </div>
   </div>
 </div>
