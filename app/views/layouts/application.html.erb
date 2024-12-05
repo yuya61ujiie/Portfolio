@@ -26,10 +26,12 @@
       <% end %>
     </header>
     <main class="mb-auto">
-    <p style="color: green"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+      <p style="color: green"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
     </main>
-    <%= render 'shared/footer' %>
+    <footer>
+      <%= render 'shared/footer' %>
+    </footer>
   </body>
 </html>
