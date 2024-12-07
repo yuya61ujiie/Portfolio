@@ -18,7 +18,7 @@
   </head>
 
   <body class="d-flex flex-column vh-100">
-    <header>
+    <header class="mb-5">
       <% if user_signed_in? %>
         <%= render 'shared/header' %>
       <% else %>
@@ -26,10 +26,11 @@
       <% end %>
     </header>
     <main class="mb-auto">
-    <p style="color: green"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+      <%= render 'shared/flash_messages' %>
+      <%= yield %>
     </main>
-    <%= render 'shared/footer' %>
+    <footer>
+      <%= render 'shared/footer' %>
+    </footer>
   </body>
 </html>
