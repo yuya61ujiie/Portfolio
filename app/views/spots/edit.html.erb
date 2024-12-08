@@ -1,12 +1,12 @@
 <% content_for :title, "スポット編集" %>
 
-<h1>スポット編集</h1>
+<h1 class="text-center">スポット編集</h1>
 
 <%= render "form", spot: @spot %>
 
 <br>
 
-<div>
-  <%= link_to "スポット詳細", @spot %> |
-  <%= link_to "スポット一覧", spots_path %>
+<div class="text-center">
+  <%= link_to "スポット詳細", @spot, class: "btn btn-primary"%>　
+  <%= link_to "スポット一覧", spots_path, class: "btn btn-primary" %>
 </div>
