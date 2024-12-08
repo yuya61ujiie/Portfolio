@@ -27,7 +27,7 @@ class SpotsController < ApplicationController
 
     respond_to do |format|
       if @spot.save
-        format.html { redirect_to @spot, notice: "Spot was successfully created." }
+        format.html { redirect_to @spot, notice: "スポットを登録しました" }
         format.json { render :show, status: :created, location: @spot }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -40,7 +40,7 @@ class SpotsController < ApplicationController
   def update
     respond_to do |format|
       if @spot.update(spot_params)
-        format.html { redirect_to @spot, notice: "Spot was successfully updated." }
+        format.html { redirect_to @spot, notice: "スポットを編集しました" }
         format.json { render :show, status: :ok, location: @spot }
       else
         format.html { render :edit, status: :unprocessable_entity }

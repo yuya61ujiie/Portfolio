@@ -1,42 +1,41 @@
-<%= form_with(model: spot) do |f| %>
-  <% if spot.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
-
-      <ul>
-        <% spot.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+<div class="container">
+  <div class="row">
+    <div class="col-6 mb-2 mx-auto">
+      <%= form_with(model: spot) do |f| %>
+        <% if spot.errors.any? %>
+          <div class="col-6 mx-auto alert alert-danger text-center">
+            <ul style="list-style: none;">
+              <% spot.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="mb-3">
-    <%= f.label :spot_name %>
-    <%= f.text_field :spot_name, class: "form-control" %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :category %>
-    <%= f.select :category, Spot.categories.keys.map { |k| [t("enum.spot.category.#{k}"), k ]}, prompt: "カテゴリを選択してください", class: "form-control" %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :address %>
-    <%= f.text_field :address, class: "form-control" %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: "form-control" %>
-  </div>
-  <div class="mb-3">
-    <%= f.label :image %>
-    <%= f.file_field :image, accept: 'image/*' %>
-  </div>
-  <% if spot.image.present? %>
-    <div class="col-md-3 offset-1">
-      <%= image_tag @spot.image, width: "50", height: "50", class: "card-img-top img-fluid" %>
+        <div class="mb-3">
+          <%= f.label :spot_name %>
+          <%= f.text_field :spot_name, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :category %>
+          <%= f.select :category, Spot.categories.keys.map { |k| [t("enums.spot.category.#{k}"), k ]}, prompt: "カテゴリを選択してください", class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :address %>
+          <%= f.text_field :address, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :body %>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :image %>
+          <%= f.file_field :image, accept: 'image/*' %>
+        </div>
+        <div class="text-center">
+          <%= f.submit %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  <div>
-    <%= f.submit %>
   </div>
-<% end %>
+</div>
