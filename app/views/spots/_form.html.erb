@@ -3,8 +3,8 @@
     <div class="col-6 mb-2 mx-auto">
       <%= form_with(model: spot) do |f| %>
         <% if spot.errors.any? %>
-          <div style="color: red">
-            <ul>
+          <div class="col-6 mx-auto alert alert-danger text-center">
+            <ul style="list-style: none;">
               <% spot.errors.each do |error| %>
                 <li><%= error.full_message %></li>
               <% end %>
