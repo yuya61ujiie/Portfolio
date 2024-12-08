@@ -31,11 +31,6 @@
     <%= f.label :image %>
     <%= f.file_field :image, accept: 'image/*' %>
   </div>
-  <% if spot.image.present? %>
-    <div class="col-md-3 offset-1">
-      <%= image_tag @spot.image, width: "50", height: "50", class: "card-img-top img-fluid" %>
-    </div>
-  <% end %>
   <div>
     <%= f.submit %>
   </div>
