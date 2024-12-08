@@ -4,8 +4,6 @@
       <%= form_with(model: spot) do |f| %>
         <% if spot.errors.any? %>
           <div style="color: red">
-            <h2><%= pluralize(spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
-
             <ul>
               <% spot.errors.each do |error| %>
                 <li><%= error.full_message %></li>
@@ -20,7 +18,7 @@
         </div>
         <div class="mb-3">
           <%= f.label :category %>
-          <%= f.select :category, Spot.categories.keys.map { |k| [t("enum.spot.category.#{k}"), k ]}, prompt: "カテゴリを選択してください", class: "form-control" %>
+          <%= f.select :category, Spot.categories.keys.map { |k| [t("enums.spot.category.#{k}"), k ]}, prompt: "カテゴリを選択してください", class: "form-control" %>
         </div>
         <div class="mb-3">
           <%= f.label :address %>
