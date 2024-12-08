@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-4 mb-4 d-grid gap-2">
-      <%= link_to "スポット一覧", spots_path, class: "btn btn-outline-primary" %>
+      <%= link_to "スポット詳細", spot_path(@spot), class: "btn btn-outline-primary" %>
     </div>
     <div class="col-4 mb-4 d-grid gap-2">
       <%= link_to "コメント一覧", spot_comments_path(@spot), class: "btn btn-outline-primary" %>
@@ -11,30 +11,34 @@
     <div class="col-7 offset-2">
       <h1><%= @spot.spot_name %></h1>
     </div>
+  </div>
+  <div class="row justify-content-around">
     <div class="col-4">
       <%= image_tag @spot.image_as_eye_catch %>
     </div>
-    <div class="col-8">
-      <% if user_signed_in? && current_user.own?(@spot) %>
-        <div class='row justify-content-end'>
-          <div class='col-1'>
-            <%= link_to edit_spot_path(@spot), id: "button-edit-#{@spot.id}" do %>
-              <button type="button" class="btn btn-primary bi bi-pencil-fill"></button>
-            <% end %>
+      <div class="col-7">
+        <% if user_signed_in? && current_user.own?(@spot) %>
+          <div class='row justify-content-end'>
+            <div class='col-1'>
+              <%= link_to edit_spot_path(@spot), id: "button-edit-#{@spot.id}" do %>
+                <button type="button" class="btn btn-primary bi bi-pencil-fill"></button>
+              <% end %>
+            </div>
+            <div class='col-1'>
+              <%= link_to spot_path(@spot), id: "button-delete-#{@spot.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
+                <button type="button" class="btn btn-danger bi bi-trash3-fill"></button>
+              <% end %>
+            </div>
           </div>
-          <div class='col-1'>
-            <%= link_to spot_path(@spot), id: "button-delete-#{@spot.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
-              <button type="button" class="btn btn-danger bi bi-trash3-fill"></button>
-            <% end %>
-          </div>
-        </div>
-      <% end %>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">カテゴリ：<%= @spot.category_i18n %></li>
-        <li class="list-group-item"><%= "投稿者： #{@spot.user.name}" %></li>
-        <li class="list-group-item">投稿日時：<%= l @spot.created_at, format: :long %></li>
-        <li class="list-group-item"><%= "#{@spot.body}" %></li>
-      </ul>
+        <% end %>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">カテゴリ：<%= @spot.category_i18n %></li>
+          <li class="list-group-item"><%= "投稿者： #{@spot.user.name}" %></li>
+          <li class="list-group-item">おすすめ度：<%= "#{@spot.comments.average(:rating)}" %></li>
+          <li class="list-group-item">投稿日時：<%= l @spot.created_at, format: :long %></li>
+          <li class="list-group-item"><%= "#{@spot.body}" %></li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
