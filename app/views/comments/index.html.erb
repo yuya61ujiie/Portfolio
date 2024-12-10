@@ -21,6 +21,9 @@
     <div class="col-4">
       <%= image_tag @spot.image_as_eye_catch %>
     </div>
+    <% if @comments.empty? %>
+      <h2 class="col-7 text-center">コメントがありません</h2>
+    <% end %>
     <div class="col-7" id="comments">
       <% @comments.each do |comment| %>
         <div class="mb-4">
