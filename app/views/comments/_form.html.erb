@@ -2,10 +2,8 @@
   <div class="row">
     <%= form_with model: [spot, comment] do |f| %>
       <% if comment.errors.any? %>
-        <div class="col-6 mb-4 mx-auto", style="color: red">
-          <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-          <ul>
+        <div class="col-6 mx-auto alert alert-danger text-center ">
+          <ul style="list-style: none;">
             <% comment.errors.each do |error| %>
               <li><%= error.full_message %></li>
             <% end %>
