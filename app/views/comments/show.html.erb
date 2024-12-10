@@ -1,53 +1,74 @@
-<p style="color: green"><%= notice %></p>
-
 <div id="<%= dom_id @comment %>">
   <div class="container">
-    <div class="row justify-content-mx-center">
-      <div class="col-2 mx-auto"></div>
-      <div class="col-2 mx-auto text-center">
-        <h2><%= "#{@comment.title}" %></h2>
+    <div class="row justify-content-center">
+      <div class="col-4 mb-4 d-grid gap-2">
+        <%= link_to "スポット詳細", spot_path(@spot), class: "btn btn-outline-primary" %>
       </div>
-      <div class="col-2 mx-auto">
-        <% if user_signed_in? && current_user.own?(@comment) %>
-          <%= link_to edit_spot_comment_path(@spot, @comment) do %>
-            <button type="button" class="btn btn-primary bi bi-pencil-fill"></button>
-          <% end %>
-          <%= link_to spot_comment_path(@spot, @comment), data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
-            <button type="button" class="btn btn-danger bi bi-trash3-fill"></button>
-          <% end %>
-        <% end %>
+      <div class="col-4 mb-4 d-grid gap-2">
+        <%= link_to "コメント一覧", spot_comments_path(@spot), class: "btn btn-outline-primary" %>
       </div>
-      <div class="col-8 mx-auto">
-        <table class="table table-light table-striped">
-          <thead>
-            <tr>
-              <th scope="col" style="width: 20%"></th>
-              <th scope="col"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row" class="text-center">投稿者</th>
-              <td><%= "#{@comment.user.name}" %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-center">利用シーン</th>
-              <td><%= "#{@comment.scene_i18n}" %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-center">利用時間</th>
-              <td><%= "#{@comment.start_at.strftime( "%H:%M" )} - #{@comment.finish_at.strftime( "%H:%M" )}" %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-center">おすすめ度</th>
-              <td><%= "#{@comment.rating_i18n}" %></td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-center">本文</th>
-              <td><%= "#{@comment.body}" %></td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row justify-content-around">
+        <div class="col-10 mb-3">
+          <h1 class="text-center"><%= @spot.spot_name %></h1>
+        </div>
+        <div class="col-2">
+          <%= link_to "コメント投稿", new_spot_comment_path, class: "btn btn-outline-primary" %>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-around">
+      <div class="col-4">
+        <%= image_tag @spot.image_as_eye_catch %>
+      </div>
+      <div class="col-7" id="comments">
+        <div class="row justify-content-center">
+          <div class="col-2 mx-auto"></div>
+          <div class="col-8 mx-auto text-center">
+            <h2><%= "#{@comment.title}" %></h2>
+          </div>
+          <div class="col-2 mx-auto">
+            <% if user_signed_in? && current_user.own?(@comment) %>
+              <%= link_to edit_spot_comment_path(@spot, @comment) do %>
+                <button type="button" class="btn btn-primary bi bi-pencil-fill"></button>
+              <% end %>
+              <%= link_to spot_comment_path(@spot, @comment), data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
+                <button type="button" class="btn btn-danger bi bi-trash3-fill"></button>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="col-12 mx-auto">
+            <table class="table table-light table-striped">
+              <thead>
+                <tr>
+                  <th scope="col" style="width: 20%"></th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="text-center">投稿者</th>
+                  <td><%= "#{@comment.user.name}" %></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">利用シーン</th>
+                  <td><%= "#{@comment.scene_i18n}" %></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">利用時間</th>
+                  <td><%= "#{@comment.start_at.strftime( "%H:%M" )} - #{@comment.finish_at.strftime( "%H:%M" )}" %></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">おすすめ度</th>
+                  <td><%= "#{@comment.rating_i18n}" %></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-center">本文</th>
+                  <td><%= "#{@comment.body}" %></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
   </div>
