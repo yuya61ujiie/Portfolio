@@ -28,12 +28,12 @@ class Spot < ApplicationRecord
   def image_as_thumbnail
     return unless image&.attached?
     return unless image.content_type.in?(%w[image/jpeg image/png])
-    image.variant(resize: "250x250").processed
+    image.variant(resize_to_limit: [ 250, 250 ]).processed
   end
 
   def image_as_eye_catch
     return unless image&.attached?
     return unless image.content_type.in?(%w[image/jpeg image/png])
-    image.variant(resize: "400x400").processed
+    image.variant(resize_to_limit: [ 400, 400 ]).processed
   end
 end
