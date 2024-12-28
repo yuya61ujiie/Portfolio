@@ -62,7 +62,7 @@ class SpotsController < ApplicationController
     @spot.destroy!
 
     respond_to do |format|
-      format.html { redirect_to spots_path, status: :see_other, notice: "Spot was successfully destroyed." }
+      format.html { redirect_to spots_path, status: :see_other, notice: "スポットを削除しました" }
       format.json { head :no_content }
     end
   end
