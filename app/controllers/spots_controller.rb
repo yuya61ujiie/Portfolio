@@ -27,7 +27,7 @@ class SpotsController < ApplicationController
 
     unless @spot.image.attached?
       @spot.image.attach(
-        io: File.open("app/assets/images/spot_default.png"), 
+        io: File.open("app/assets/images/spot_default.png"),
         filename: "spot_default.png",
         content_type: "image/png",
       )
