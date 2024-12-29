@@ -10,11 +10,11 @@
               </div>
               <div class="col-md-8">
                 <div class="row">
-                  <div class="col-md-4">
+                  <div class="col-md-8">
                     <%= spot.category_i18n %>
                     <h3><%= link_to spot.spot_name, spot_path(spot) %></h3>
                   </div>
-                  <div class="col-md-8 text-end">
+                  <div class="col-md-4 text-end">
                     <% if user_signed_in? && current_user.own?(spot) %>
                       <div class='d-flex justify-content-end'>
                         <%= link_to edit_spot_path(spot), id: "button-edit-#{spot.id}" do %>

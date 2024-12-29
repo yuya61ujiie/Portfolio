@@ -4,6 +4,7 @@ ja:
       invalid: メールアドレスまたはパスワードが正しくありません。
       user:
         unauthenticated: ログインをしてください
+        already_authenticated: すでにログインしています
     sessions:
       signed_in: ログインに成功しました。
       signed_out: ログアウトしました。

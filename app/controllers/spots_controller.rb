@@ -25,6 +25,14 @@ class SpotsController < ApplicationController
   def create
     @spot = current_user.spots.build(spot_params)
 
+    unless @spot.image.attached?
+      @spot.image.attach(
+        io: File.open("app/assets/images/spot_default.png"),
+        filename: "spot_default.png",
+        content_type: "image/png",
+      )
+    end
+
     respond_to do |format|
       if @spot.save
         format.html { redirect_to @spot, notice: "スポットを登録しました" }
@@ -54,7 +62,7 @@ class SpotsController < ApplicationController
     @spot.destroy!
 
     respond_to do |format|
-      format.html { redirect_to spots_path, status: :see_other, notice: "Spot was successfully destroyed." }
+      format.html { redirect_to spots_path, status: :see_other, notice: "スポットを削除しました" }
       format.json { head :no_content }
     end
   end
