@@ -12,6 +12,9 @@ ja:
       user:
         signed_up: "アカウント登録が完了しました。"
       signed_up: "アカウント登録が完了しました。"
+    passwords:
+      user:
+        send_instructions: メールを送信しました
   errors:
     messages:
       not_saved:
