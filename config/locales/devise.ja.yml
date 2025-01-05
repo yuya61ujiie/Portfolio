@@ -15,6 +15,7 @@ ja:
     passwords:
       user:
         send_instructions: メールを送信しました
+        updated: パスワードを変更しました
     mailer:
       reset_password_instructions:
         subject: 【MorningHub】パスワードリセットのお知らせ
