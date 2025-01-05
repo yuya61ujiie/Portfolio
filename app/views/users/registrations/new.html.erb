@@ -27,9 +27,13 @@
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "6文字以上で入力してください"  %>
       </div>
 
-      <div class="col-4 mx-auto">
+      <div class="col-4 mb-4 mx-auto">
         <%= f.submit %>
       </div>
     <% end %>
+
+    <div class="col-4 mx-auto">
+      <%= link_to "パスワードを忘れた方はこちら", new_user_password_path %>
+    </div>
   </div>
 </div>

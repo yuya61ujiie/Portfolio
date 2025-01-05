@@ -12,6 +12,13 @@ ja:
       user:
         signed_up: "アカウント登録が完了しました。"
       signed_up: "アカウント登録が完了しました。"
+    passwords:
+      user:
+        send_instructions: メールを送信しました
+        updated: パスワードを変更しました
+    mailer:
+      reset_password_instructions:
+        subject: 【MorningHub】パスワードリセットのお知らせ
   errors:
     messages:
       not_saved:
