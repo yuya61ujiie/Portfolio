@@ -11,4 +11,16 @@ class User < ApplicationRecord
   def own?(object)
     id == object&.user_id
   end
+
+  def bookmark(spot)
+    bookmark_spots << spot
+  end
+
+  def unbookmark(spot)
+    bookmark_spots.destroy(spot)
+  end
+
+  def bookmark?(spot)
+    bookmark_spots.include?(spot)
+  end
 end
