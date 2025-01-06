@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :spots
   has_many :comments
   has_many :bookmarks, dependent: :destroy
-  has_many :bookmark_boards, through: :bookmarks, source: :board
+  has_many :bookmark_spots, through: :bookmarks, source: :spot
 
   def own?(object)
     id == object&.user_id
