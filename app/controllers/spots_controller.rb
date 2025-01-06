@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   before_action :set_spot, only: %i[ show update destroy ]
-  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy bookmarks ]
 
   # GET /spots or /spots.json
   def index
