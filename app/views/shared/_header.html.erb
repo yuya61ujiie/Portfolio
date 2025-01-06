@@ -6,11 +6,19 @@
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
+        <li class="nav-item">
         <%= link_to "一覧で探す", spots_path, class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "ログアウト", destroy_user_session_path, class: "nav-link", data: { turbo_method: :delete } %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            マイページ
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end text-center">
+            <li><%= link_to "プロフィール", "#", class: "dropdown-item" %></li>
+            <li><%= link_to "お気に入り", bookmarks_spots_path, class: "dropdown-item" %></li>
+            <li><%= link_to "スポット投稿", new_spot_path, class: "dropdown-item" %></li>
+            <li><%= link_to "ログアウト", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
+          </ul>
         </li>
       </ul>
     </div>
