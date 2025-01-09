@@ -28,6 +28,8 @@
                           <button type="button" class="btn btn-danger bi bi-trash3-fill"></button>
                         <% end %>
                       </div>
+                    <%  else %>
+                      <%= render 'bookmark_buttons', { spot: spot } if user_signed_in? %>
                     <% end %>
                   </div>
                 </div>

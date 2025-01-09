@@ -34,6 +34,8 @@
               <% end %>
             </div>
           </div>
+        <%  else %>
+          <%= render 'bookmark_buttons', { spot: @spot } if user_signed_in? %>
         <% end %>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">カテゴリ：<%= @spot.category_i18n %></li>

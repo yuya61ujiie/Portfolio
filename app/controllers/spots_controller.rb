@@ -1,6 +1,6 @@
 class SpotsController < ApplicationController
   before_action :set_spot, only: %i[ show update destroy ]
-  before_action :authenticate_user!, only: %i[ new create edit update destroy ]
+  before_action :authenticate_user!, only: %i[ new create edit update destroy bookmarks ]
 
   # GET /spots or /spots.json
   def index
@@ -65,6 +65,10 @@ class SpotsController < ApplicationController
       format.html { redirect_to spots_path, status: :see_other, notice: "スポットを削除しました" }
       format.json { head :no_content }
     end
+  end
+
+  def bookmarks
+    @spots = current_user.bookmark_spots.all
   end
 
   private
