@@ -6,11 +6,7 @@
           <div class="card-body">
             <div class="row justify-content-around">
               <div class="col-md-3">
-                <% unless spot.image.attached? %>
-                  <%= image_tag "spot_default.png", size: "250x250" %>
-                <% else %>
-                  <%= image_tag spot.image_as_thumbnail %>
-                <% end %>
+                <%= image_tag spot.image_as_thumbnail %>
               </div>
               <div class="col-md-8">
                 <div class="row">
