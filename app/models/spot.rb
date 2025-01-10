@@ -9,6 +9,8 @@ class Spot < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :spot_tags, dependent: :destroy
+  has_many :tags, through: :spot_tags
 
   has_one_attached :image
 
