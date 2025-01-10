@@ -18,10 +18,10 @@
     </div>
     <div class="row justify-content-around">
       <div class="col-4">
-        <% unless @spot.image.attached? %>
-          <%= image_tag "spot_default.png", size: "400x400" %>
-        <% else %>
+        <% if @spot.image.attached? %>
           <%= image_tag @spot.image_as_eye_catch %>
+        <% else %>
+          <%= image_tag "spot_default.png", size: "400x400" %>
         <% end %>
       </div>
       <div class="col-7" id="comments">
