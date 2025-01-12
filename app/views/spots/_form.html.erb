@@ -29,6 +29,10 @@
           <%= f.text_area :body, class: "form-control" %>
         </div>
         <div class="mb-3">
+          <%= f.label :tag_ids %>
+          <%= f.text_field :tag_ids, class: "form-control" %>
+        </div>
+        <div class="mb-3">
           <%= f.label :image %>
           <%= f.file_field :image, accept: 'image/*' %>
         </div>

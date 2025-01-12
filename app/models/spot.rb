@@ -37,4 +37,11 @@ class Spot < ApplicationRecord
     return unless image.content_type.in?(%w[image/jpeg image/png])
     image.variant(resize_to_limit: [ 400, 400 ]).processed
   end
+
+  def save_tags(savepost_tags)
+    savepost_tags.each do |new_name|
+      post_tag = Tag.find_or_create_by(name: new_name)
+      self.tags << post_tag
+    end
+  end
 end
