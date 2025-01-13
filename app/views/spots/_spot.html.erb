@@ -17,6 +17,11 @@
                   <div class="col-md-8">
                     <%= spot.category_i18n %>
                     <h3><%= link_to spot.spot_name, spot_path(spot) %></h3>
+                    <% spot.tags.each do |tag| %>
+                      <%= link_to spots_path(tag_id: tag.id) do %>
+                        <span class="badge text-bg-primary"><%= "#{ tag.name }" %></span>
+                      <% end %>
+                    <% end %>
                   </div>
                   <div class="col-md-4 text-end">
                     <% if user_signed_in? && current_user.own?(spot) %>

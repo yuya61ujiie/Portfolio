@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_01_06_063925) do
+ActiveRecord::Schema[7.2].define(version: 2025_01_10_014458) do
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -64,6 +64,16 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_06_063925) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "spot_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "spot_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["spot_id", "tag_id"], name: "index_spot_tags_on_spot_id_and_tag_id", unique: true
+    t.index ["spot_id"], name: "index_spot_tags_on_spot_id"
+    t.index ["tag_id"], name: "index_spot_tags_on_tag_id"
+  end
+
   create_table "spots", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id"
     t.string "spot_name", null: false
@@ -73,6 +83,13 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_06_063925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_spots_on_user_id"
+  end
+
+  create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -94,5 +111,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_06_063925) do
   add_foreign_key "bookmarks", "users"
   add_foreign_key "comments", "spots"
   add_foreign_key "comments", "users"
+  add_foreign_key "spot_tags", "spots"
+  add_foreign_key "spot_tags", "tags"
   add_foreign_key "spots", "users"
 end

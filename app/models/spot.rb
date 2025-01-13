@@ -9,6 +9,8 @@ class Spot < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :spot_tags, dependent: :destroy
+  has_many :tags, through: :spot_tags
 
   has_one_attached :image
 
@@ -34,5 +36,12 @@ class Spot < ApplicationRecord
   def image_as_eye_catch
     return unless image.content_type.in?(%w[image/jpeg image/png])
     image.variant(resize_to_limit: [ 400, 400 ]).processed
+  end
+
+  def save_tags(savepost_tags)
+    savepost_tags.each do |new_name|
+      post_tag = Tag.find_or_create_by(name: new_name)
+      self.tags << post_tag
+    end
   end
 end
