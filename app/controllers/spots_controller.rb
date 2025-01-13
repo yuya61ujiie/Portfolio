@@ -24,7 +24,7 @@ class SpotsController < ApplicationController
   # POST /spots or /spots.json
   def create
     @spot = current_user.spots.build(spot_params)
-    tag_list = params[:spot][:tag_ids].split(',')
+    tag_list = params[:spot][:tag_ids].split(",")
 
     unless @spot.image.attached?
       @spot.image.attach(
@@ -81,6 +81,6 @@ class SpotsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spot_params
-      params.require(:spot).permit(:spot_name, :category, :address, :body, :image ).merge(user_id: current_user.id)
+      params.require(:spot).permit(:spot_name, :category, :address, :body, :image).merge(user_id: current_user.id)
     end
 end
