@@ -4,7 +4,7 @@ class SpotsController < ApplicationController
 
   # GET /spots or /spots.json
   def index
-    @spots = Spot.all
+    @spots = params[:tag_id].present? ? Tag.find(params[:tag_id]).spots : Spot.all
   end
 
   # GET /spots/1 or /spots/1.json
