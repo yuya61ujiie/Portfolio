@@ -11,21 +11,24 @@ class SearchSpotsForm
   # validate :title...
   # このformでしか使用しないバリデーションがあればこちらに記述する。
 
-    def search
-      relation = Spot.distinct
+  def search
+    relation = Spot.distinct
 
-      spot_name_words.each do |word|
-        relation = relation.spot_name_contain(word)
-      end
-      relation = relation.by_category(category) if category.present?
-      address_words.each do |word|
-        relation = relation.address_contain(word)
-      end
-      relation = relation.by_tag(tag_id) if tag_id.present?
-      relation
+    spot_name_words.each do |word|
+      relation = relation.spot_name_contain(word)
     end
 
-    private
+    relation = relation.by_category(category) if category.present?
+
+    address_words.each do |word|
+      relation = relation.address_contain(word)
+    end
+
+    relation = relation.by_tag(tag_id) if tag_id.present?
+    relation
+  end
+
+  private
 
     def spot_name_words
       spot_name.present? ? spot_name.split(nil) : []
@@ -34,4 +37,4 @@ class SearchSpotsForm
     def address_words
       address.present? ? address.split(nil) : []
     end
-  end
+end
