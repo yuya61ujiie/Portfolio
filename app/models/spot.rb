@@ -16,9 +16,9 @@ class Spot < ApplicationRecord
 
   enum category: { cafe: 1, work_space: 2, karaoke: 3, other: 4 }
 
-  scope :spot_name_contain, ->(word) { where('spot_name LIKE ?', "%#{word}%") }
-  scope :by_category, ->(category) { where(category: category)}
-  scope :address_contain, ->(word) { where('address LIKE ?', "%#{word}%") }
+  scope :spot_name_contain, ->(word) { where("spot_name LIKE ?", "%#{word}%") }
+  scope :by_category, ->(category) { where(category: category) }
+  scope :address_contain, ->(word) { where("address LIKE ?", "%#{word}%") }
   scope :by_tag, ->(tag_id) { joins(:tags).where(spot_tags: { tag_id: tag_id }) }
 
   def image_content_type
