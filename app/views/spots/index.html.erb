@@ -1,6 +1,19 @@
 <% content_for :title, "スポット一覧" %>
 
 <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <form class="d-flex mb-2" role="search">
+        <%= form_with model: @search_spots_form, scope: :q, url: spots_path, method: :get do |f| %>
+          <%= f.search_field :spot_name, class: 'form-control me-2', placeholder: "記事内容" %>
+          <%= f.select :category, Spot.categories.map { |k, v| [t("enums.spot.category.#{k}"), v ]} , { include_blank: "カテゴリ" }, class: 'form-control me-2' %>
+          <%= f.search_field :address, class: 'form-control me-2', placeholder: "住所" %>
+          <%= f.select :tag_id, Tag.pluck(:name, :id) , { include_blank: "タグ" }, class: 'form-control me-2' %>
+          <%= f.submit '検索', class: "btn btn-primary" %>
+        <% end %>
+      </form>
+    </div>
+  </div>
   <div class="row">
     <div class="col-5 offset-3">
       <% if params[:tag_id].present? %>

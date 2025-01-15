@@ -4,7 +4,12 @@ class SpotsController < ApplicationController
 
   # GET /spots or /spots.json
   def index
-    @spots = params[:tag_id].present? ? Tag.find(params[:tag_id]).spots : Spot.all
+    if params[:tag_id]
+      @spots = Tag.find(params[:tag_id]).spots
+    else
+      @search_spots_form = SearchSpotsForm.new(search_params)
+      @spots = @search_spots_form.search
+    end
   end
 
   # GET /spots/1 or /spots/1.json
@@ -82,5 +87,9 @@ class SpotsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def spot_params
       params.require(:spot).permit(:spot_name, :category, :address, :body, :image).merge(user_id: current_user.id)
+    end
+
+    def search_params
+      params[:q]&.permit(:spot_name, :category, :address, :tag_id)
     end
 end
