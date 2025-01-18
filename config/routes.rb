@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :comments
     collection do
       get :bookmarks
+      get :search
     end
   end
   resources :bookmarks, only: %i[create destroy]
