@@ -78,6 +78,13 @@ class SpotsController < ApplicationController
     @spots = current_user.bookmark_spots.all
   end
 
+  def search
+    @spots = Spot.where("spot_name like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_spot
