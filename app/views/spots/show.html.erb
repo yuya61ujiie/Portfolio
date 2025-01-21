@@ -48,6 +48,7 @@
           <li class="list-group-item">おすすめ度：<%= "#{@spot.comments.average(:rating)}" %></li>
           <li class="list-group-item">投稿日時：<%= l @spot.created_at, format: :long %></li>
           <li class="list-group-item"><%= "#{@spot.body}" %></li>
+          <li class="list-group-item">利用シーン：<%= pie_chart @spot.comments.group(:scene).count.transform_keys { |key| I18n.t("enums.comment.scene.#{key}") }, width: "200px", height: "200px", donut: true %></li>
         </ul>
       </div>
     </div>
