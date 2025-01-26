@@ -24,6 +24,12 @@
       <% else %>
         <%= image_tag "spot_default.png", size: "400x400" %>
       <% end %>
+      <div class="text-center">
+        <p>朝活の報告はこちら</p>
+        <%= link_to "https://twitter.com/share?url=#{spot_url(@spot)}&text=今日はここで朝活！%0a%0a#{@spot.spot_name}", target: "_blank", data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア" do %>
+          <button type="button" class="btn btn-dark bi bi-twitter-x" style="font-size: 1.5rem"></button>
+        <% end %>
+      </div>
     </div>
       <div class="col-7">
         <% if user_signed_in? && current_user.own?(@spot) %>
