@@ -49,13 +49,13 @@ module ApplicationHelper
           description: :description,
           type: "website",
           url: request.original_url,
-          image: image_url(url_for(@spot.image)),
+          image: image_url(@spot.image.present? ? url_for(@spot.image) : "top_image.png"),
           local: "ja-JP"
         },
         twitter: {
           card: "summary_large_image",
           site: "@yuya_ujiie",
-          image: image_url(url_for(@spot.image))
+          image: image_url(@spot.image.present? ? url_for(@spot.image) : "top_image.png")
         }
       }
     end
