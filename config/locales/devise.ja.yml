@@ -19,6 +19,9 @@ ja:
     mailer:
       reset_password_instructions:
         subject: 【MorningHub】パスワードリセットのお知らせ
+    omniauth_callbacks:
+      failure: "%{kind} からの認証に失敗しました  理由: %{reason}"
+      success: "%{kind} アカウントでログインしました"
   errors:
     messages:
       not_saved:
