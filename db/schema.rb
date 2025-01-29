@@ -53,13 +53,14 @@ ActiveRecord::Schema[7.2].define(version: 2025_01_28_052053) do
     t.bigint "user_id"
     t.bigint "spot_id"
     t.integer "scene", null: false
-    t.integer "rating", null: false
     t.time "start_at", null: false
     t.time "finish_at", null: false
+    t.integer "rating", null: false
     t.string "title", null: false
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "star"
     t.index ["spot_id"], name: "index_comments_on_spot_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
