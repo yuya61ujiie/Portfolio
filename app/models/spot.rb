@@ -21,6 +21,9 @@ class Spot < ApplicationRecord
   scope :address_contain, ->(word) { where("address LIKE ?", "%#{word}%") }
   scope :by_tag, ->(tag_id) { joins(:tags).where(spot_tags: { tag_id: tag_id }) }
 
+  geocoded_by :address
+  after_validation :geocode
+
   def image_content_type
     if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/gif])
       errors.add(:image, "：ファイル形式が、JPEG, PNG, GIF以外になっています。ファイル形式をご確認ください。")
