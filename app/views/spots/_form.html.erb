@@ -30,7 +30,7 @@
         </div>
         <div class="mb-3">
           <%= f.label :tag_ids, "タグ　,で区切ると複数タグ登録できます" %>
-          <%= f.text_field :tag_ids, class: "form-control" %>
+          <%= f.text_field :tag_ids, class: "form-control", value: spot.tags.map(&:name).join(",") %>
         </div>
         <div class="mb-3">
           <%= f.label :image %>

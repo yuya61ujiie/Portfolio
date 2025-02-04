@@ -46,10 +46,18 @@ class Spot < ApplicationRecord
     image.variant(resize_to_limit: [ 400, 400 ]).processed
   end
 
-  def save_tags(savepost_tags)
-    savepost_tags.each do |new_name|
-      post_tag = Tag.find_or_create_by(name: new_name)
-      self.tags << post_tag
+  def save_tags(save_post_tags)
+    current_tags = self.tags.pluck(:name) if self.tags.present?
+    old_tags = current_tags - save_post_tags
+    new_tags = save_post_tags - current_tags
+
+    old_tags.each do |old_tag|
+      self.tags.delete Tag.find_by(name: old_tag)
+    end
+
+    new_tags.each do |new_tag|
+      spot_tag = Tag.find_or_create_by(name: new_tag)
+      self.tags << spot_tag
     end
   end
 end

@@ -53,8 +53,11 @@ class SpotsController < ApplicationController
 
   # PATCH/PUT /spots/1 or /spots/1.json
   def update
+    tag_list = params[:spot][:tag_ids].split(",")
+
     respond_to do |format|
       if @spot.update(spot_params)
+        @spot.save_tags(tag_list)
         format.html { redirect_to @spot, notice: "スポットを編集しました" }
         format.json { render :show, status: :ok, location: @spot }
       else
