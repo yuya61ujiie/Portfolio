@@ -1,0 +1,27 @@
+<div id="map" data-latitude="<%= spot.latitude %>" data-longitude="<%= spot.longitude %>"></div>
+<script>
+  let map;
+
+  async function initMap() {
+    const position = {lat: parseFloat(document.getElementById('map').dataset.latitude),
+                      lng: parseFloat(document.getElementById('map').dataset.longitude)
+                      };
+    const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
+    map = new Map(document.getElementById("map"), {
+      zoom: 17,
+      center: position,
+      mapId: "DEMO_MAP_ID",
+    });
+
+    const marker = new AdvancedMarkerElement({
+      map: map,
+      position: position
+    });
+  }
+
+  initMap();
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap"></script>
