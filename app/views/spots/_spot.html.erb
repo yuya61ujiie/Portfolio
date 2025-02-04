@@ -19,7 +19,7 @@
                     <h3><%= link_to spot.spot_name, spot_path(spot) %></h3>
                     <% spot.tags.each do |tag| %>
                       <%= link_to spots_path(tag_id: tag.id) do %>
-                        <span class="badge text-bg-primary"><%= "#{ tag.name }" %></span>
+                        <span class="badge rounded-pill text-bg-primary"><%= "#{ tag.name }" %></span>
                       <% end %>
                     <% end %>
                   </div>
