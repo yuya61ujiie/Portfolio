@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "Users", type: :system do
-  include LoginMacros
 
   let(:user) { create(:user) }
 
