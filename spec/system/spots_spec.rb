@@ -1,7 +1,6 @@
 require "rails_helper"
 
 RSpec.describe "Spots", type: :system do
-
   let(:user) { create(:user) }
   let(:spot) { create(:spot) }
 

@@ -13,7 +13,7 @@ RSpec.describe Bookmark, type: :model do
       bookmark = create(:bookmark)
       new_bookmark = build(:bookmark, user: bookmark.user, spot: bookmark.spot)
       new_bookmark.valid?
-      expect(new_bookmark.errors[:user_id]).to eq ['はすでに存在します']
+      expect(new_bookmark.errors[:user_id]).to eq [ 'はすでに存在します' ]
     end
   end
 end
