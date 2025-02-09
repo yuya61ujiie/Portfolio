@@ -84,6 +84,7 @@ jobs:
       - scan_ruby
       - rubocop
       - Rspec
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
