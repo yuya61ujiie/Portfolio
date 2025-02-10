@@ -51,10 +51,7 @@ jobs:
       chrome:
         image: selenium/standalone-chrome:latest
         ports:
-          - 4444:4444
-
-    env:
-      SELENIUM_DRIVER_URL: http://selenium:4444/wd/hub
+          - 4445:4444
 
     steps:
       - name: Checkout code
