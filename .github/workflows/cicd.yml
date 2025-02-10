@@ -80,6 +80,10 @@ jobs:
 
       - name: Run RSpec
         run: bundle exec rspec spec/models spec/system
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_MAP_API_KEY: ${{ secrets.GOOGLE_MAP_API_KEY }}
 
   Deploy:
     needs:
@@ -94,7 +98,7 @@ jobs:
     - name: Deploy heroku
       uses: akhileshns/heroku-deploy@v3.13.15
       with:
-        heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+        heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
         heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
         heroku_email: "yuya61ujiie@gmail.com"
         usedocker: true
