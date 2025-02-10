@@ -38,14 +38,15 @@ jobs:
 
   Rspec:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     services:
-      db:
+      mysql:
         image: mysql:8.0
-        env:
-          MYSQL_ROOT_PASSWORD: password
         ports:
-          - 3307:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=10s --health-retries=3
+          - 3306:3306
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+        options: --health-cmd "mysqladmin ping" --health-interval 10s --health-timeout 5s --health-retries 10
 
       selenium:
         image: selenium/standalone-chrome:latest
