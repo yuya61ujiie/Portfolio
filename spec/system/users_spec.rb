@@ -74,7 +74,7 @@ RSpec.describe "Users", type: :system do
 
   describe "ログイン後" do
     context "ログアウトをクリック" do
-      it "ログアウトが成功する" do
+      it "ログアウトが成功する", js: true do
         login_as(user)
         click_on "マイページ"
         click_link "ログアウト"

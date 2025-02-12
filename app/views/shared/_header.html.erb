@@ -1,26 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <%= link_to "MorningHub", root_path, class: "navbar-brand" %>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <%= link_to "一覧で探す", spots_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            マイページ
-          </a>
-          <ul class="dropdown-menu dropdown-menu-end text-center">
-            <li><%= link_to "プロフィール", "#", class: "dropdown-item" %></li>
-            <li><%= link_to "お気に入り", bookmarks_spots_path, class: "dropdown-item" %></li>
-            <li><%= link_to "スポット投稿", new_spot_path, class: "dropdown-item" %></li>
-            <li><%= link_to "ログアウト", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
-          </ul>
-        </li>
-      </ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "一覧で探す", spots_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          マイページ
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end text-center">
+          <li><%= link_to "プロフィール", "#", class: "dropdown-item" %></li>
+          <li><%= link_to "お気に入り", bookmarks_spots_path, class: "dropdown-item" %></li>
+          <li><%= link_to "スポット投稿", new_spot_path, class: "dropdown-item" %></li>
+          <li><%= link_to "ログアウト", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
+        </ul>
+      </li>
+    </ul>
     </div>
   </div>
 </nav>
