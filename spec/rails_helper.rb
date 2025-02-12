@@ -78,7 +78,8 @@ RSpec.configure do |config|
       Capybara.ignore_hidden_elements = false
       Selenium::WebDriver.logger.ignore(:clear_local_storage, :clear_session_storage)
     else
-      driven_by :selenium_chrome_headless, screen_size: [ 1980, 1080 ]
+      driven_by :selenium_chrome_headless, screen_size: [ 1980, 1080 ], options: { browser: :chrome }
+      Capybara.javascript_driver = :selenium_chrome_headless
     end
   end
 
