@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :bookmarks, only: %i[create destroy]
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+
+  get "users/profile" => "users#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
