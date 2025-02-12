@@ -44,7 +44,7 @@ RSpec.describe "Spots", type: :system do
 
     describe "ログイン後" do
       context "スポットの新規投稿画面にアクセス" do
-        it "新規投稿画面へのアクセスに成功する" do
+        it "新規投稿画面へのアクセスに成功する", js: true do
           login_as(spot.user)
           click_on "マイページ"
           click_link "スポット投稿"
