@@ -69,7 +69,7 @@ jobs:
           sudo apt-get install -y libnss3 xvfb
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
