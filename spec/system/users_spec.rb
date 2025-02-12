@@ -76,7 +76,7 @@ RSpec.describe "Users", type: :system do
     context "ログアウトをクリック" do
       it "ログアウトが成功する", js: true do
         login_as(user)
-        click_on "マイページ"
+        find(".dropdown-toggle").click
         click_link "ログアウト"
         expect(page).to have_content "ログアウトしました"
         expect(current_path).to eq root_path
