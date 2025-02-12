@@ -46,7 +46,7 @@ RSpec.describe "Spots", type: :system do
       context "スポットの新規投稿画面にアクセス" do
         it "新規投稿画面へのアクセスに成功する", js: true do
           login_as(spot.user)
-          find(".dropdown-toggle").click
+          click_on "マイページ"
           click_link "スポット投稿"
           expect(page).to have_content "スポット登録"
         end
