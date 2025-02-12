@@ -10,7 +10,7 @@
           マイページ
         </a>
         <ul class="dropdown-menu dropdown-menu-end text-center">
-          <li><%= link_to "プロフィール", "#", class: "dropdown-item" %></li>
+          <li><%= link_to "プロフィール", users_profile_path, class: "dropdown-item" %></li>
           <li><%= link_to "お気に入り", bookmarks_spots_path, class: "dropdown-item" %></li>
           <li><%= link_to "スポット投稿", new_spot_path, class: "dropdown-item" %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
