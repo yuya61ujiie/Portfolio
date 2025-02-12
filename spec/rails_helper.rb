@@ -71,14 +71,14 @@ RSpec.configure do |config|
   # システムスペックで事前にCapybaraを設定
   config.before(:each, type: :system) do
     if ENV['SELENIUM_DRIVER_URL']
-      driven_by :remote_chrome
+      driven_by :remote_chrome, screen_size: [1980, 1080]
       Capybara.server_host = IPSocket.getaddress(Socket.gethostname)
       Capybara.server_port = 4444
       Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
       Capybara.ignore_hidden_elements = false
       Selenium::WebDriver.logger.ignore(:clear_local_storage, :clear_session_storage)
     else
-      driven_by :selenium_chrome_headless
+      driven_by :selenium_chrome_headless, screen_size: [1980, 1080]
     end
   end
 
