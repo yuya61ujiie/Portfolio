@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   end
   resources :bookmarks, only: %i[create destroy]
 
-  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
+  devise_for :users, controllers:
+    { omniauth_callbacks: "users/omniauth_callbacks",
+      registrations: "users/registrations"
+    }
 
   get "users/profile" => "users#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
