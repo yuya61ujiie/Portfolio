@@ -9,6 +9,7 @@ ja:
       signed_in: ログインに成功しました。
       signed_out: ログアウトしました。
     registrations:
+      updated: アカウントを更新しました
       user:
         signed_up: "アカウント登録が完了しました。"
       signed_up: "アカウント登録が完了しました。"
