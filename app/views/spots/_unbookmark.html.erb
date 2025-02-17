@@ -1,3 +1,3 @@
 <%= link_to bookmark_path(current_user.bookmarks.find_by(spot_id: spot.id)), id: "unbookmark-button-for-spot-#{spot.id}", data: { turbo_method: :delete } do %>
-  <i class="bi bi-star-fill"></i>
+  <i style="color:#ffcc00" class="bi bi-star-fill fs-3"></i>
 <% end %>
