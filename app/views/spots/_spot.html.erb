@@ -5,16 +5,16 @@
         <article class="card">
           <div class="card-body">
             <div class="row justify-content-around">
-              <div class="col-md-3">
+              <div class="col-md-4 d-flex justify-content-center align-items-center">
                 <% if spot.image.attached? %>
-                  <%= image_tag spot.image_as_thumbnail %>
+                  <%= image_tag spot.image_as_thumbnail, class: "img-fluid" %>
                 <% else %>
-                  <%= image_tag "spot_default.png", size: "250x250" %>
+                  <%= image_tag "spot_default.png", size: "250x250", class: "img-fluid"  %>
                 <% end %>
               </div>
               <div class="col-md-8">
                 <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-9">
                     <%= spot.category_i18n %>
                     <h3><%= link_to spot.spot_name, spot_path(spot) %></h3>
                     <% spot.tags.each do |tag| %>
@@ -23,15 +23,19 @@
                       <% end %>
                     <% end %>
                   </div>
-                  <div class="col-md-4 text-end">
+                  <div class="col-3 text-end">
                     <% if user_signed_in? && current_user.own?(spot) %>
-                      <div class='d-flex justify-content-end'>
+                      <div class="row">
+                        <div class="col-6">
                         <%= link_to edit_spot_path(spot), id: "button-edit-#{spot.id}" do %>
-                          <button type="button" class="btn btn-primary bi bi-pencil-fill"></button>
+                        <i class="bi bi-pencil-square fs-3"></i>
                         <% end %>
-                        <%= link_to spot_path(spot), id: "button-delete-#{spot.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
-                          <button type="button" class="btn btn-danger bi bi-trash3-fill"></button>
-                        <% end %>
+                        </div>
+                        <div class="col-6">
+                          <%= link_to spot_path(spot), id: "button-delete-#{spot.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
+                            <i style="color:red;" class="bi bi bi-trash3-fill fs-3"></i>
+                          <% end %>
+                        </div>
                       </div>
                     <%  else %>
                       <%= render 'bookmark_buttons', { spot: spot } if user_signed_in? %>
