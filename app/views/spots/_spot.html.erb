@@ -2,7 +2,7 @@
   <div class="container pt-4">
     <div class="row mb-2 justify-content-center">
       <div class="col-10">
-        <article class="card">
+        <article class="card shadow-sm bg-body-tertiary rounded">
           <div class="card-body">
             <div class="row justify-content-around">
               <div class="col-md-4 d-flex justify-content-center align-items-center">
@@ -47,9 +47,9 @@
                   </div>
                 </div>
                 <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><%= "#{spot.address}" %></li>
-                  <li class="list-group-item">おすすめ度：<%= "#{spot.comments.average(:rating)}" %></li>
-                  <li class="list-group-item"><%= "#{spot.body}" %></li>
+                  <li class="list-group-item bg-body-tertiary"><%= "#{spot.address}" %></li>
+                  <li class="list-group-item bg-body-tertiary">おすすめ度：<%= "#{spot.comments.average(:rating)}" %></li>
+                  <li class="list-group-item bg-body-tertiary"><%= "#{spot.body}" %></li>
                 </ul>
               </div>
             </div>

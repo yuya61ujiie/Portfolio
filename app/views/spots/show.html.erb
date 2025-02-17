@@ -10,7 +10,7 @@
 
   <div class="row justify-content-center">
     <div class="col-10 text-center">
-      <h1 class=><%= @spot.spot_name %></h1>
+      <h1><%= @spot.spot_name %></h1>
       <div class="row justify-content-center">
         <% @spot.tags.each do |tag| %>
           <div class="col-auto">
@@ -23,7 +23,24 @@
     </div>
   </div>
 
-  <div class="row justify-content-around">
+  <div class='row justify-content-end'>
+  <% if user_signed_in? && current_user.own?(@spot) %>
+    <div class='col-1'>
+      <%= link_to edit_spot_path(@spot), id: "button-edit-#{@spot.id}" do %>
+        <i class="bi bi-pencil-square fs-3"></i>
+      <% end %>
+    </div>
+    <div class='col-1'>
+      <%= link_to spot_path(@spot), id: "button-delete-#{@spot.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
+        <i style="color:red;" class="bi bi bi-trash3-fill fs-3"></i>
+      <% end %>
+    </div>
+  <%  else %>
+    <%= render 'bookmark_buttons', { spot: @spot } if user_signed_in? %>
+  <% end %>
+  </div>
+
+  <div class="row justify-content-around shadow-sm p-3 mb-5 bg-body-tertiary rounded">
     <div class="col-md-4 text-center">
       <% if @spot.image.attached? %>
         <%= image_tag @spot.image_as_eye_catch, class: "img-fluid"%>
@@ -32,22 +49,6 @@
       <% end %>
     </div>
     <div class="col-md-7">
-      <% if user_signed_in? && current_user.own?(@spot) %>
-        <div class='row justify-content-end'>
-          <div class='col-1'>
-            <%= link_to edit_spot_path(@spot), id: "button-edit-#{@spot.id}" do %>
-              <i class="bi bi-pencil-square fs-3"></i>
-            <% end %>
-          </div>
-          <div class='col-1'>
-            <%= link_to spot_path(@spot), id: "button-delete-#{@spot.id}", data: { turbo_method: :delete, turbo_confirm: '削除しますか' } do %>
-              <i style="color:red;" class="bi bi bi-trash3-fill fs-3"></i>
-            <% end %>
-          </div>
-        </div>
-      <%  else %>
-        <%= render 'bookmark_buttons', { spot: @spot } if user_signed_in? %>
-      <% end %>
       <table class="table table-sm">
         <thead>
           <tr>
