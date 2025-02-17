@@ -2,7 +2,7 @@
   <div class="row">
     <%= form_with model: [spot, comment] do |f| %>
       <% if comment.errors.any? %>
-        <div class="col-6 mx-auto alert alert-danger text-center ">
+        <div class="col-6 mx-auto alert alert-danger text-center">
           <ul style="list-style: none;">
             <% comment.errors.each do |error| %>
               <li><%= error.full_message %></li>
@@ -11,24 +11,24 @@
         </div>
       <% end %>
 
-      <div class="col-6 mb-1 mx-auto">
+      <div class="col-md-6 mb-1 mx-auto">
         <%= f.label :scene %>
       </div>
-      <div class="col-6 mb-4 mx-auto">
+      <div class="col-md-6 mb-4 mx-auto">
         <%= f.select :scene, Comment.scenes.keys.map { |k| [t("enums.comment.scene.#{k}"), k ]}, prompt: "目的を選択してください", class: "form-control" %>
       </div>
-      <div class="col-6 mb-4 mx-auto">
+      <div class="col-md-6 mb-4 mx-auto">
         <%= f.label :start_at %>
-        <%= f.time_field :start_at, class: "form-control" %>
+        <%= f.time_select :start_at, class: "form-control", minute_step: 15 %>
       </div>
-      <div class="col-6 mb-4 mx-auto">
+      <div class="col-md-6 mb-4 mx-auto">
         <%= f.label :finish_at %>
-        <%= f.time_field :finish_at, class: "form-control" %>
+        <%= f.time_select :finish_at, class: "form-control", minute_step: 15 %>
       </div>
-      <div class="col-6 mb-1 mx-auto">
+      <div class="col-md-6 mb-1 mx-auto">
         <%= f.label :rating %>
       </div>
-      <div class="col-6 mb-4 mx-auto rate-form">
+      <div class="col-md-6 mb-4 mx-auto rate-form">
         <%= f.radio_button :rating, :star_5 %>
         <label for="comment_rating_star_5">★</label>
         <%= f.radio_button :rating, :star_4 %>
@@ -40,17 +40,17 @@
         <%= f.radio_button :rating, :star_1 %>
         <label for="comment_rating_star_1">★</label>
       </div>
-      <div class="col-6 mb-4 mx-auto">
+      <div class="col-md-6 mb-4 mx-auto">
         <%= f.label :title %>
         <%= f.text_field :title, class: "form-control" %>
       </div>
-      <div class="col-6 mb-4 mx-auto">
+      <div class="col-md-6 mb-4 mx-auto">
         <%= f.label :body %>
         <%= f.text_area :body, class: "form-control" %>
       </div>
 
-      <div class="col-6 mb-2 mx-auto text-center">
-        <%= f.submit %>
+      <div class="col-md-6 mb-2 mx-auto text-center">
+        <%= f.submit class:"btn btn-primary" %>
       </div>
     <% end %>
   </div>
