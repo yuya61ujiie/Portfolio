@@ -17,11 +17,15 @@
                   <div class="col-9">
                     <%= spot.category_i18n %>
                     <h3><%= link_to spot.spot_name, spot_path(spot) %></h3>
-                    <% spot.tags.each do |tag| %>
-                      <%= link_to spots_path(tag_id: tag.id) do %>
-                        <span class="badge rounded-pill text-bg-primary"><%= "#{ tag.name }" %></span>
+                    <div class="row">
+                      <% spot.tags.each do |tag| %>
+                        <div class="col-auto">
+                          <%= link_to spots_path(tag_id: tag.id) do %>
+                            <span class="badge text-bg-primary"><%= "#{ tag.name }" %></span>
+                          <% end %>
+                        </div>
                       <% end %>
-                    <% end %>
+                    </div>
                   </div>
                   <div class="col-3 text-end">
                     <% if user_signed_in? && current_user.own?(spot) %>
