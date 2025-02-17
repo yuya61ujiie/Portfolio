@@ -38,12 +38,12 @@ class Spot < ApplicationRecord
 
   def image_as_thumbnail
     return unless image.content_type.in?(%w[image/jpeg image/png])
-    image.variant(resize_to_limit: [ 250, 250 ]).processed
+    image.variant(resize_to_fill: [ 250, 250 ]).processed
   end
 
   def image_as_eye_catch
     return unless image.content_type.in?(%w[image/jpeg image/png])
-    image.variant(resize_to_limit: [ 400, 400 ]).processed
+    image.variant(resize_to_fill: [ 400, 400 ]).processed
   end
 
   def save_tags(save_post_tags)
