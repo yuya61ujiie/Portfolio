@@ -1,7 +1,18 @@
-<div class='container mt-3'>
-  <div class='row'>
-    <div class='mx-auto'>
-      <p>Copyright © sample All Rights Reserved.</p>
-    </div>
+<nav class="navbar navbar-expand navbar-light bg-light mt-3">
+  <div class="container-fluid">
+    <span class="navbar-text">
+      © 2025 MorningHub - All Rights Reserved.
+    </span>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <%= link_to "利用規約", term_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "プライバシーポリシー", policy_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "問い合わせ", "https://forms.gle/Wi9pEGJAKtbARwDn8", class: "nav-link" %>
+      </li>
+    </ul>
   </div>
-</div>
+</nav>

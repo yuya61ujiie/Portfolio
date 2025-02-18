@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   get "users/profile" => "users#show"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
+  get "policy" => "static_pages#policy"
+  get "term" => "static_pages#term"
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
