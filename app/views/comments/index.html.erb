@@ -1,41 +1,52 @@
-<% content_for :title, "Comments" %>
-
 <div class="container">
+  <div class="row justify-content-around mb-4 shadow-sm bg-body-tertiary rounded">
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <%= link_to  "スポット詳細", spot_path(@spot), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to"コメント一覧", spot_comments_path(@spot), class: "nav-link active" %>
+      </li>
+    </ul>
+  </div>
+
   <div class="row justify-content-center">
-    <div class="col-4 mb-4 d-grid gap-2">
-      <%= link_to "スポット詳細", spot_path(@spot), class: "btn btn-outline-primary" %>
-    </div>
-    <div class="col-4 mb-4 d-grid gap-2">
-      <%= link_to "コメント一覧", spot_comments_path(@spot), class: "btn btn-outline-primary active" %>
-    </div>
-    <div class="row">
-      <div class="col-10 mb-3 text-center">
-        <h1><%= @spot.spot_name %></h1>
+    <div class="col-10 text-center">
+      <h1><%= @spot.spot_name %></h1>
+      <div class="row justify-content-center">
         <% @spot.tags.each do |tag| %>
-          <%= link_to spots_path(tag_id: tag.id) do %>
-            <span class="badge text-bg-primary"><%= "#{ tag.name }" %></span>
-          <% end %>
+          <div class="col-auto">
+            <%= link_to spots_path(tag_id: tag.id) do %>
+              <span class="badge text-bg-secondary"><%= "#{ tag.name }" %></span>
+            <% end %>
+          </div>
         <% end %>
-      </div>
-      <div class="col-2">
-        <%= link_to "コメント投稿", new_spot_comment_path, class: "btn btn-outline-primary" %>
       </div>
     </div>
   </div>
+
+  <div class='row justify-content-end'>
+    <div class="col-12 mb-3 d-flex justify-content-end">
+      <%= link_to "コメント投稿", new_spot_comment_path, class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+
   <div class="row justify-content-around">
-    <div class="col-4">
+    <div class="col-md-4">
       <% if @spot.image.attached? %>
-        <%= image_tag @spot.image_as_eye_catch %>
+        <%= image_tag @spot.image_as_eye_catch, class: "img-fluid" %>
       <% else %>
-        <%= image_tag "spot_default.png", size: "400x400" %>
+        <%= image_tag "spot_default.png", size: "400x400", class: "img-fluid" %>
       <% end %>
     </div>
+
+    <div class="col-md-7">
     <% if @comments.empty? %>
-      <h2 class="col-7 text-center">コメントがありません</h2>
+      <h2 class="text-center">コメントがありません</h2>
     <% end %>
-    <div class="col-7" id="comments">
+    <div id="comments">
       <% @comments.each do |comment| %>
-        <div class="mb-4">
+        <div class="mb-5 shadow-sm p-3 mb-5 bg-body-tertiary rounded">
           <%= render comment %>
         </div>
       <% end %>

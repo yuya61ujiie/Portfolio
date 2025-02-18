@@ -1,45 +1,43 @@
 <div class="container">
-  <div class="row">
-    <div class="col-6 mb-2 mx-auto">
-      <%= form_with(model: spot) do |f| %>
-        <% if spot.errors.any? %>
-          <div class="col-6 mx-auto alert alert-danger text-center">
-            <ul style="list-style: none;">
-              <% spot.errors.each do |error| %>
-                <li><%= error.full_message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-        <div class="mb-3">
-          <%= f.label :spot_name %>
-          <%= f.text_field :spot_name, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :category %>
-          <%= f.select :category, Spot.categories.keys.map { |k| [t("enums.spot.category.#{k}"), k ]}, prompt: "カテゴリを選択してください", class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :address %>
-          <%= f.text_field :address, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :body %>
-          <%= f.text_area :body, class: "form-control" %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :tag_ids, "タグ　,で区切ると複数タグ登録できます" %>
-          <%= f.text_field :tag_ids, class: "form-control", value: spot.tags.map(&:name).join(",") %>
-        </div>
-        <div class="mb-3">
-          <%= f.label :image %>
-          <%= f.file_field :image, accept: 'image/*' %>
-        </div>
-        <div class="text-center">
-          <%= f.submit %>
+  <div class="row justify-content-center">
+    <%= form_with(model: spot) do |f| %>
+      <% if spot.errors.any? %>
+        <div class="col-md-6 mx-auto alert alert-danger text-center">
+          <ul style="list-style: none;">
+            <% spot.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
         </div>
       <% end %>
-    </div>
+
+      <div class="col-md-6 mb-3 mx-auto">
+        <%= f.label :spot_name %>
+        <%= f.text_field :spot_name, class: "form-control" %>
+      </div>
+      <div class="col-md-6 mb-3 mx-auto">
+        <%= f.label :category %>
+        <%= f.select :category, Spot.categories.keys.map { |k| [t("enums.spot.category.#{k}"), k ]}, prompt: "カテゴリを選択してください", class: "form-control" %>
+      </div>
+      <div class="col-md-6 mb-3 mx-auto">
+        <%= f.label :address %>
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+      <div class="col-md-6 mb-3 mx-auto">
+        <%= f.label :body %>
+        <%= f.text_area :body, class: "form-control" %>
+      </div>
+      <div class="col-md-6 mb-3 mx-auto">
+        <%= f.label :tag_ids, "タグ　,で区切ると複数タグ登録できます" %>
+        <%= f.text_field :tag_ids, class: "form-control", value: spot.tags.map(&:name).join(",") %>
+      </div>
+      <div class="col-6 mb-3 mx-auto">
+        <%= f.label :image %>
+        <%= f.file_field :image, accept: 'image/*' %>
+      </div>
+      <div class="text-center">
+        <%= f.submit class:"btn btn-primary"%>
+      </div>
+    <% end %>
   </div>
 </div>
