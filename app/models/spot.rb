@@ -47,7 +47,7 @@ class Spot < ApplicationRecord
   end
 
   def save_tags(save_post_tags)
-    current_tags = self.tags.pluck(:name) if self.tags.present?
+    current_tags = self.tags.pluck(:name)
     old_tags = current_tags - save_post_tags
     new_tags = save_post_tags - current_tags
 
