@@ -1,6 +1,6 @@
 module ApplicationHelper
   def assign_meta_tags
-    if @spot.nil?
+    if @spot.blank?
       {
         site: "Morning Hub",
         title: "朝活スポット検索アプリ - Morning Hub",
@@ -49,13 +49,13 @@ module ApplicationHelper
           description: :description,
           type: "website",
           url: request.original_url,
-          image: image_url(@spot.image.present? ? url_for(@spot.image) : "top_image.png"),
+          image: image_url(@spot.image.persisted? ? url_for(@spot.image) : "top_image.png"),
           local: "ja-JP"
         },
         twitter: {
           card: "summary_large_image",
           site: "@yuya_ujiie",
-          image: image_url(@spot.image.present? ? url_for(@spot.image) : "top_image.png")
+          image: image_url(@spot.image.persisted? ? url_for(@spot.image) : "top_image.png")
         }
       }
     end
