@@ -1,4 +1,6 @@
 class Spot < ApplicationRecord
+  before_create :set_uuid
+
   validates :spot_name, presence: true, length: { maximum: 255 }
   validates :category, presence: true
   validates :address, presence: true, length: { maximum: 255 }
@@ -59,5 +61,9 @@ class Spot < ApplicationRecord
       spot_tag = Tag.find_or_create_by(name: new_tag)
       self.tags << spot_tag
     end
+  end
+
+  def set_uuid
+    self.id = SecureRandom.uuid
   end
 end
