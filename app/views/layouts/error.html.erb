@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= display_meta_tags(assign_meta_tags)%>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  </head>
+
+  <body class="d-flex flex-column vh-100">
+    <header class="mb-5">
+      <% if user_signed_in? %>
+        <%= render 'shared/header' %>
+      <% else %>
+        <%= render 'shared/before_login_header' %>
+      <% end %>
+    </header>
+    <main class="mb-auto">
+      <%= render 'shared/flash_messages' %>
+      <%= yield %>
+    </main>
+    <footer>
+      <%= render 'shared/footer' %>
+    </footer>
+  </body>
+</html>
