@@ -33,8 +33,8 @@ class SpotsController < ApplicationController
 
     unless @spot.image.attached?
       @spot.image.attach(
-        io: File.open("app/assets/images/spot_default.png"),
-        filename: "spot_default.png",
+        io: File.open("app/assets/images/spot_default.webp"),
+        filename: "spot_default.webp",
         content_type: "image/png",
       )
     end
