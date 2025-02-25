@@ -27,8 +27,8 @@ class Spot < ApplicationRecord
   after_validation :geocode
 
   def image_content_type
-    if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/gif])
-      errors.add(:image, "：ファイル形式が、JPEG, PNG, GIF以外になっています。ファイル形式をご確認ください。")
+    if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/gif image/webp])
+      errors.add(:image, "：ファイル形式が、JPEG, PNG, GIF, WEBP以外になっています。ファイル形式をご確認ください。")
     end
   end
 
@@ -39,12 +39,12 @@ class Spot < ApplicationRecord
   end
 
   def image_as_thumbnail
-    return unless image.content_type.in?(%w[image/jpeg image/png])
+    return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
     image.variant(resize_to_fill: [ 250, 250 ], format: :webp).processed
   end
 
   def image_as_eye_catch
-    return unless image.content_type.in?(%w[image/jpeg image/png])
+    return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
     image.variant(resize_to_fill: [ 400, 400 ], format: :webp).processed
   end
 
