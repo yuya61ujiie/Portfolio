@@ -3,14 +3,59 @@
     <div class="col-12 mb-2 text-center">
       <h1>Morning Hub</h1>
     </div>
-    <div class="col-8 text-center">
+    <div class="col-8 mb-2 text-center">
       <p>朝から始まる、理想のワークスペースを見つけよう！</p>
       <p>Morning Hubは、朝の作業や読書に最適なカフェ、ワークスペース、カラオケなどの場所を見つけるためのアプリです。
       あなたの作業スタイルにぴったりのスポットを簡単に探せます！</p>
     </div>
     <div class="col-12 mb-2 text-center">
+      <%= link_to "使ってみる", spots_path, class: "btn btn-primary btn-lg", role: "button" %>
+    </div>
+    <div class="col-12 mb-5 text-center">
       <%= image_tag "top_page.webp", size: '700x700', class: "img-fluid" %>
     </div>
   </div>
+
+  <div class="row justify-content-evenly">
+    <div class="col-12 text-center mb-3">
+      <h2>使い方</h2>
+    </div>
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-12">
+          <h4 class="text-center mb-5">朝活スポットを検索！</h4>
+          <div class="col-12 mb-5 text-center">
+            <%= image_tag "top_image_search.webp", size: '160x150', class: "img-fluid" %>
+          </div>
+          <ol class="list-group list-group-flush list-group-numbered mb-3">
+            <li class="list-group-item">スポット名、カテゴリ、住所、タグなどを組み合わせて検索</li>
+            <li class="list-group-item">スポットの詳細でおすすめ度、マップ、利用シーンを確認</li>
+            <li class="list-group-item">コメントでさらに詳細情報をチェック！</li>
+            <li class="list-group-item">Xから朝活の報告！</li>
+          </ol>
+          <div class="col-12 mb-5 text-center">
+            <%= link_to "使ってみる", spots_path, class: "btn btn-primary btn-lg", role: "button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="row">
+        <div class="col-12 text-center">
+          <h4 class="mb-4">ログイン後はこんな機能も！</h4>
+          <a href="https://gyazo.com/c74d427e9d87f16981ba12915cf17b55"><img src="https://i.gyazo.com/c74d427e9d87f16981ba12915cf17b55.gif" alt="Image from Gyazo" width="500" class="mb-3"/></a>
+          <ul class="list-group list-group-flush mb-5">
+            <li class="list-group-item">お気に入りのスポットを登録できる！</li>
+            <li class="list-group-item">スポット、コメントの投稿ができる！</li>
+            <li class="list-group-item">googleログインで簡単登録！</li>
+          </ul>
+          <div class="col-12 text-center">
+            <%= link_to "登録はこちらから", new_user_registration_path, class: "btn btn-primary btn-lg", role: "button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
