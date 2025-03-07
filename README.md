@@ -1,5 +1,5 @@
 # プロジェクト名： Morning Hub
-<img width="700" src="app/assets/images/top_image.webp">
+<img width="700" src="app/assets/images/readme.webp">
 
 # 目次
 - [サービス概要](#-サービス概要)
