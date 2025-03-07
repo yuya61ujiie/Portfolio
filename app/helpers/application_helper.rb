@@ -11,7 +11,7 @@ module ApplicationHelper
         canonical: request.original_url,
         separator: "|",
         icon: [
-          { href: image_url("favicon.ico") },
+          { href: image_url("favicon.webp") },
           { href: image_url("favicon.webp"), rel: "apple-touch-icon", sizes: "180x180", type: "image/png" }
         ],
         og: {
@@ -40,7 +40,7 @@ module ApplicationHelper
         canonical: request.original_url,
         separator: "|",
         icon: [
-          { href: image_url("favicon.ico") },
+          { href: image_url("favicon.webp") },
           { href: image_url("favicon.webp"), rel: "apple-touch-icon", sizes: "180x180", type: "image/png" }
         ],
         og: {
