@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :spot do
+    id { nil }
     sequence(:spot_name) { |n| "店名_#{n}" }
     category { [ 1, 2, 3, 4 ].sample }
     sequence(:address) { |n| "住所_#{n}" }
