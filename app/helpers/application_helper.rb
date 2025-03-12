@@ -12,7 +12,7 @@ module ApplicationHelper
         separator: "|",
         icon: [
           { href: image_url("favicon.webp") },
-          { href: image_url("favicon.webp"), rel: "apple-touch-icon", sizes: "180x180", type: "image/png" }
+          { href: image_url("favicon.webp"), rel: "apple-touch-icon", sizes: "180x180", type: "image/webp" }
         ],
         og: {
           site_name: :site,
@@ -29,6 +29,35 @@ module ApplicationHelper
           image: image_url("top_image.webp")
         }
       }
+    elsif @comment.present? && params[:action] == "show"
+      {
+        site: "Morning Hub",
+        title: "#{@spot.spot_name}",
+        reverse: true,
+        charset: "utf-8",
+        description: "#{@comment.title}",
+        keywords: "朝活, スポット検索, カフェ, ワークスペース, 公園, 朝の活動",
+        canonical: request.original_url,
+        separator: "|",
+        icon: [
+          { href: image_url("favicon.webp") },
+          { href: image_url("favicon.webp"), rel: "apple-touch-icon", sizes: "180x180", type: "image/webp" }
+        ],
+        og: {
+          site_name: :site,
+          title: :title,
+          description: :description,
+          type: "website",
+          url: request.original_url,
+          image: image_url(@spot.image.attached? ? url_for(@spot.image) : "spot_default.webp"),
+          local: "ja-JP"
+        },
+        twitter: {
+          card: "summary_large_image",
+          site: "@yuya_ujiie",
+          image: image_url(@spot.image.attached? ? url_for(@spot.image) : "spot_default.webp")
+        }
+      }
     else
       {
         site: "Morning Hub",
@@ -41,7 +70,7 @@ module ApplicationHelper
         separator: "|",
         icon: [
           { href: image_url("favicon.webp") },
-          { href: image_url("favicon.webp"), rel: "apple-touch-icon", sizes: "180x180", type: "image/png" }
+          { href: image_url("favicon.webp"), rel: "apple-touch-icon", sizes: "180x180", type: "image/webp" }
         ],
         og: {
           site_name: :site,
@@ -49,13 +78,13 @@ module ApplicationHelper
           description: :description,
           type: "website",
           url: request.original_url,
-          image: image_url(@spot.image.persisted? ? url_for(@spot.image) : "top_image.webp"),
+          image: image_url(@spot.image.attached? ? url_for(@spot.image) : "spot_default.webp"),
           local: "ja-JP"
         },
         twitter: {
           card: "summary_large_image",
           site: "@yuya_ujiie",
-          image: image_url(@spot.image.persisted? ? url_for(@spot.image) : "top_image.webp")
+          image: image_url(@spot.image.attached? ? url_for(@spot.image) : "spot_default.webp")
         }
       }
     end
