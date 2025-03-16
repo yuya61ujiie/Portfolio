@@ -43,14 +43,26 @@ RSpec.describe "Spots", type: :system do
     end
 
     describe "ログイン後" do
+      before do
+        login_as(spot.user)
+      end
+
       context "スポットの新規投稿画面にアクセス" do
         it "新規投稿画面へのアクセスに成功する", js: true do
-          login_as(spot.user)
           click_on "マイページ"
           click_link "スポット投稿"
           expect(page).to have_content "スポット登録"
         end
       end
+
+      context "スポットの編集画面にアクセス" do
+        it "編集画面へのアクセスに成功する", js: true do
+          visit edit_spot_path(spot)
+          expect(page).to have_content "スポット編集"
+          expect(page).to have_content spot.spot_name
+        end
+      end
+
     end
   end
 end
