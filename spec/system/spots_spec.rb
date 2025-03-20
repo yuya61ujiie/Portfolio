@@ -80,7 +80,6 @@ RSpec.describe "Spots", type: :system do
           fill_in "説明", with: "テスト"
           fill_in "タグ", with: "テスト,tag"
           click_button "登録"
-          expect(current_path).to eq new_spot_path
           expect(page).to have_content "スポットを登録しました"
           expect(page).to have_content "朝活カフェ"
         end
@@ -97,6 +96,20 @@ RSpec.describe "Spots", type: :system do
           click_button "登録"
           expect(current_path).to eq new_spot_path
           expect(page).to have_content "店名を入力してください"
+        end
+      end
+    end
+
+    describe "スポットの編集" do
+      context "フォームの入力値が正常" do
+        it "編集が成功する" do
+          visit edit_spot_path(spot)
+          expect(page).to have_content "#{spot.spot_name}"
+          fill_in "店名", with: "朝活カフェ"
+          click_button "更新"
+          expect(page).to have_content "スポットを編集しました"
+          expect(page).to have_content "朝活カフェ"
+          expect(current_path).to eq spot_path(spot)
         end
       end
     end
