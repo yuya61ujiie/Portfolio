@@ -40,8 +40,8 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_26_031501) do
   end
 
   create_table "bookmarks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "spot_id"
+    t.bigint "user_id", null: false
+    t.string "spot_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["spot_id"], name: "index_bookmarks_on_spot_id"
@@ -49,25 +49,24 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_26_031501) do
     t.index ["user_id"], name: "index_bookmarks_on_user_id"
   end
 
-  create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "spot_id"
+  create_table "comments", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "spot_id", null: false
     t.integer "scene", null: false
+    t.integer "rating", null: false
     t.time "start_at", null: false
     t.time "finish_at", null: false
-    t.integer "rating", null: false
     t.string "title", null: false
     t.text "body", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "star"
     t.index ["spot_id"], name: "index_comments_on_spot_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "spot_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "spot_id", null: false
-    t.bigint "tag_id", null: false
+    t.string "spot_id", null: false
+    t.string "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["spot_id", "tag_id"], name: "index_spot_tags_on_spot_id_and_tag_id", unique: true
@@ -75,20 +74,20 @@ ActiveRecord::Schema[7.2].define(version: 2025_02_26_031501) do
     t.index ["tag_id"], name: "index_spot_tags_on_tag_id"
   end
 
-  create_table "spots", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id"
+  create_table "spots", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "spot_name", null: false
     t.integer "category", null: false
     t.string "address", null: false
     t.text "body", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.float "latitude"
     t.float "longitude"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_spots_on_user_id"
   end
 
-  create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "tags", id: :string, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
