@@ -104,7 +104,7 @@
 | CI/CD       | GitHub Actions |<br>
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/f585ea4afa8a4fc06571765198908f1c.png)](https://gyazo.com/f585ea4afa8a4fc06571765198908f1c)<br>
+[![Image from Gyazo](https://i.gyazo.com/bd6eff4b90673da6a54f0d6f5991494a.png)](https://gyazo.com/bd6eff4b90673da6a54f0d6f5991494a)<br>
 <br>
 
 ## 画面遷移図
