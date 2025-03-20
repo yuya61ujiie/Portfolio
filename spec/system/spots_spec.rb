@@ -62,7 +62,28 @@ RSpec.describe "Spots", type: :system do
           expect(page).to have_content spot.spot_name
         end
       end
+    end
+  end
 
+  describe "CRUD" do
+    before do
+      login_as(spot.user)
+    end
+
+    describe "スポットの新規作成" do
+      context "フォームの入力値が正常" do
+        it "新規作成が成功する" do
+        visit new_spot_path
+        fill_in "店名", with: "朝活カフェ"
+        select "カフェ", from: "カテゴリ"
+        fill_in "住所", with: "北海道札幌市"
+        fill_in "説明", with: "テスト"
+        fill_in "タグ", with: "テスト,tag"
+        click_button "登録"
+        expect(page).to have_content "スポットを登録しました"
+        expect(page).to have_content "朝活カフェ"
+        end
+      end
     end
   end
 end
