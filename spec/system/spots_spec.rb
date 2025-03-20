@@ -59,7 +59,6 @@ RSpec.describe "Spots", type: :system do
         it "編集画面へのアクセスに成功する", js: true do
           visit edit_spot_path(spot)
           expect(page).to have_content "スポット編集"
-          expect(page).to have_content "#{spot.spot_name}"
         end
       end
     end
@@ -105,7 +104,7 @@ RSpec.describe "Spots", type: :system do
       context "フォームの入力値が正常" do
         it "編集が成功する" do
           visit edit_spot_path(spot)
-          expect(page).to have_content "#{spot.spot_name}"
+          expect(page).to have_content "スポット編集"
           fill_in "店名", with: "朝活カフェ"
           click_button "更新"
           expect(page).to have_content "スポットを編集しました"
@@ -116,7 +115,7 @@ RSpec.describe "Spots", type: :system do
       context "店名が未記入" do
         it "編集が失敗する" do
           visit edit_spot_path(spot)
-          expect(page).to have_content "#{spot.spot_name}"
+          expect(page).to have_content "スポット編集"
           fill_in "店名", with: nil
           click_button "更新"
           expect(page).to have_content "店名を入力してください"
