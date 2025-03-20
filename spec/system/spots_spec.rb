@@ -59,7 +59,7 @@ RSpec.describe "Spots", type: :system do
         it "編集画面へのアクセスに成功する", js: true do
           visit edit_spot_path(spot)
           expect(page).to have_content "スポット編集"
-          expect(page).to have_content spot.spot_name
+          expect(page).to have_content "#{spot.spot_name}"
         end
       end
     end
@@ -68,6 +68,7 @@ RSpec.describe "Spots", type: :system do
   describe "CRUD" do
     before do
       login_as(spot.user)
+      expect(page).to have_content "ログインに成功しました"
     end
 
     describe "スポットの新規作成" do
