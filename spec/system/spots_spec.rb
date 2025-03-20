@@ -43,12 +43,83 @@ RSpec.describe "Spots", type: :system do
     end
 
     describe "ログイン後" do
+      before do
+        login_as(spot.user)
+      end
+
       context "スポットの新規投稿画面にアクセス" do
         it "新規投稿画面へのアクセスに成功する", js: true do
-          login_as(spot.user)
           click_on "マイページ"
           click_link "スポット投稿"
           expect(page).to have_content "スポット登録"
+        end
+      end
+
+      context "スポットの編集画面にアクセス" do
+        it "編集画面へのアクセスに成功する", js: true do
+          visit edit_spot_path(spot)
+          expect(page).to have_content "スポット編集"
+        end
+      end
+    end
+  end
+
+  describe "CRUD" do
+    before do
+      login_as(spot.user)
+      expect(page).to have_content "ログインに成功しました"
+    end
+
+    describe "スポットの新規作成" do
+      context "フォームの入力値が正常" do
+        it "新規作成が成功する" do
+          visit new_spot_path
+          fill_in "店名", with: "朝活カフェ"
+          select "カフェ", from: "カテゴリ"
+          fill_in "住所", with: "北海道札幌市"
+          fill_in "説明", with: "テスト"
+          fill_in "タグ", with: "テスト,tag"
+          click_button "登録"
+          expect(page).to have_content "スポットを登録しました"
+          expect(page).to have_content "朝活カフェ"
+        end
+      end
+
+      context "店名が未記入" do
+        it "新規作成が失敗する" do
+          visit new_spot_path
+          fill_in "店名", with: nil
+          select "カフェ", from: "カテゴリ"
+          fill_in "住所", with: "北海道札幌市"
+          fill_in "説明", with: "テスト"
+          fill_in "タグ", with: "テスト,tag"
+          click_button "登録"
+          expect(page).to have_content "店名を入力してください"
+          expect(current_path).to eq new_spot_path
+        end
+      end
+    end
+
+    describe "スポットの編集" do
+      context "フォームの入力値が正常" do
+        it "編集が成功する" do
+          visit edit_spot_path(spot)
+          expect(page).to have_content "スポット編集"
+          fill_in "店名", with: "朝活カフェ"
+          click_button "更新"
+          expect(page).to have_content "スポットを編集しました"
+          expect(page).to have_content "朝活カフェ"
+        end
+      end
+
+      context "店名が未記入" do
+        it "編集が失敗する" do
+          visit edit_spot_path(spot)
+          expect(page).to have_content "スポット編集"
+          fill_in "店名", with: nil
+          click_button "更新"
+          expect(page).to have_content "店名を入力してください"
+          expect(current_path).to eq edit_spot_path(spot)
         end
       end
     end

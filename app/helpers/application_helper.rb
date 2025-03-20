@@ -1,12 +1,12 @@
 module ApplicationHelper
   def assign_meta_tags
-    if @spot.blank?
+    if @spot&.persisted?
       {
         site: "Morning Hub",
-        title: "朝活スポット検索アプリ - Morning Hub",
+        title: "#{@spot.spot_name}",
         reverse: true,
         charset: "utf-8",
-        description: "朝活を充実させたい方必見！カフェ、ワークスペース、公園など全国の朝活スポットを簡単に検索できるアプリ。理想の朝をスタートさせましょう。",
+        description: "#{@spot.body}",
         keywords: "朝活, スポット検索, カフェ, ワークスペース, 公園, 朝の活動",
         canonical: request.original_url,
         separator: "|",
@@ -20,13 +20,13 @@ module ApplicationHelper
           description: :description,
           type: "website",
           url: request.original_url,
-          image: image_url("top_image.webp"),
+          image: image_url(@spot.image.attached? ? url_for(@spot.image) : "spot_default.webp"),
           local: "ja-JP"
         },
         twitter: {
           card: "summary_large_image",
           site: "@yuya_ujiie",
-          image: image_url("top_image.webp")
+          image: image_url(@spot.image.attached? ? url_for(@spot.image) : "spot_default.webp")
         }
       }
     elsif @comment.present? && params[:action] == "show"
@@ -61,10 +61,10 @@ module ApplicationHelper
     else
       {
         site: "Morning Hub",
-        title: "#{@spot.spot_name}",
+        title: "朝活スポット検索アプリ - Morning Hub",
         reverse: true,
         charset: "utf-8",
-        description: "#{@spot.body}",
+        description: "朝活を充実させたい方必見！カフェ、ワークスペース、公園など全国の朝活スポットを簡単に検索できるアプリ。理想の朝をスタートさせましょう。",
         keywords: "朝活, スポット検索, カフェ, ワークスペース, 公園, 朝の活動",
         canonical: request.original_url,
         separator: "|",
@@ -78,13 +78,13 @@ module ApplicationHelper
           description: :description,
           type: "website",
           url: request.original_url,
-          image: image_url(@spot.image.attached? ? url_for(@spot.image) : "spot_default.webp"),
+          image: image_url("top_image.webp"),
           local: "ja-JP"
         },
         twitter: {
           card: "summary_large_image",
           site: "@yuya_ujiie",
-          image: image_url(@spot.image.attached? ? url_for(@spot.image) : "spot_default.webp")
+          image: image_url("top_image.webp")
         }
       }
     end

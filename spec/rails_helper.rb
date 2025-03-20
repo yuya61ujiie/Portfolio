@@ -76,10 +76,14 @@ RSpec.configure do |config|
       Capybara.server_port = 4444
       Capybara.app_host = "http://#{Capybara.server_host}:#{Capybara.server_port}"
       Capybara.ignore_hidden_elements = false
+      Capybara.default_max_wait_time = 5
+      Capybara.current_session.driver.browser.manage.window.resize_to(1980, 1080)
       Selenium::WebDriver.logger.ignore(:clear_local_storage, :clear_session_storage)
     else
       driven_by :selenium_chrome_headless, screen_size: [ 1980, 1080 ], options: { browser: :chrome }
       Capybara.javascript_driver = :selenium_chrome_headless
+      Capybara.current_session.driver.browser.manage.window.resize_to(1980, 1080)
+      Capybara.default_max_wait_time = 5
     end
   end
 
