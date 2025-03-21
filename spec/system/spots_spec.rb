@@ -45,6 +45,7 @@ RSpec.describe "Spots", type: :system do
     describe "ログイン後" do
       before do
         login_as(spot.user)
+        expect(page).to have_content "ログインに成功しました"
       end
 
       context "スポットの新規投稿画面にアクセス" do
