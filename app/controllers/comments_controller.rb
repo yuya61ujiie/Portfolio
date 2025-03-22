@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   # GET /comments or /comments.json
   def index
-    @comments = @spot.comments
+    @comments = @spot.comments.includes([:user])
   end
 
   # GET /comments/1 or /comments/1.json
