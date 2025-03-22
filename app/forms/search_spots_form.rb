@@ -7,12 +7,8 @@ class SearchSpotsForm
   attribute :address, :string
   attribute :tag_id, :integer
 
-  ### バリデーション
-  # validate :title...
-  # このformでしか使用しないバリデーションがあればこちらに記述する。
-
   def search
-    relation = Spot.distinct
+    relation = Spot.includes(:image_attachment, :tags).distinct
 
     spot_name_words.each do |word|
       relation = relation.spot_name_contain(word)

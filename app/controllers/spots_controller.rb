@@ -5,7 +5,7 @@ class SpotsController < ApplicationController
   # GET /spots or /spots.json
   def index
     if params[:tag_id]
-      @spots = Tag.find(params[:tag_id]).spots
+      @spots = Tag.find(params[:tag_id]).spots.includes(:image_attachment, :tags)
     else
       @search_spots_form = SearchSpotsForm.new(search_params)
       @spots = @search_spots_form.search

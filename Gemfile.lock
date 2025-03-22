@@ -107,6 +107,9 @@ GEM
     brakeman (7.0.0)
       racc
     builder (3.3.0)
+    bullet (8.0.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     capybara (3.40.0)
       addressable
       matrix
@@ -421,6 +424,7 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
+    uniform_notifier (1.16.0)
     uri (1.0.2)
     useragent (0.16.10)
     version_gem (1.1.4)
@@ -455,6 +459,7 @@ DEPENDENCIES
   binding_of_caller
   bootsnap
   brakeman (~> 7.0.0)
+  bullet
   capybara
   chartkick
   cssbundling-rails

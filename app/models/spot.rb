@@ -1,5 +1,5 @@
 class Spot < ApplicationRecord
-  before_validation :set_uuid
+  before_create :set_uuid
 
   validates :spot_name, presence: true, length: { maximum: 255 }
   validates :category, presence: true
