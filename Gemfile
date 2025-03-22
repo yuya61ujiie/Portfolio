@@ -86,6 +86,8 @@ group :development do
   gem "web-console"
 
   gem "letter_opener_web"
+
+  gem "bullet"
 end
 
 group :test do
