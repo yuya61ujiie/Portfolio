@@ -48,7 +48,7 @@
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item bg-body-tertiary"><%= "#{spot.address}" %></li>
-                  <li class="list-group-item bg-body-tertiary">おすすめ度：<%= "#{spot.comments.average(:rating)}" %></li>
+                  <li class="list-group-item bg-body-tertiary">おすすめ度：<%= "#{spot.comments.average(:rating)&.round(1)}" %></li>
                   <li class="list-group-item bg-body-tertiary"><%= "#{spot.body}" %></li>
                 </ul>
               </div>
