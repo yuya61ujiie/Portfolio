@@ -69,7 +69,9 @@
           </tr>
           <tr>
             <th scope="row" class="text-center">おすすめ度</th>
-            <td><%= "#{@spot.comments.average(:rating)}" %></td>
+            <td><%= "#{@spot.comments.average(:rating)&.round(1)}" %>
+              <span class="rate-show" style="color:#ffcc00"><%= "#{@spot.decorate.average_star}" %></span></li>
+            </td>
           </tr>
           <tr>
             <th scope="row" class="text-center">説明</th>
