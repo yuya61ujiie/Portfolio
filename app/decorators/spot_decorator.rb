@@ -18,5 +18,4 @@ class SpotDecorator < Draper::Decorator
       "★★★★★"
     end
   end
-
 end
