@@ -78,6 +78,20 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content "ログインに成功しました"
     end
 
+    describe "ユーザー情報の変更" do
+      context "フォーム入力が正常" do
+        it "変更が成功する" do
+          visit edit_user_registration_path
+          fill_in "氏名", with: "ujiie"
+          fill_in "メールアドレス", with: "example@example.com"
+          click_button "更新"
+          expect(page).to have_content "アカウントを更新しました"
+          expect(current_path).to eq users_profile_path
+        end
+      end
+    end
+
+
     context "ログアウトをクリック" do
       it "ログアウトが成功する", js: true do
         click_on "マイページ"
