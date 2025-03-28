@@ -89,8 +89,18 @@ RSpec.describe "Users", type: :system do
           expect(current_path).to eq users_profile_path
         end
       end
-    end
 
+      context "フォーム入力が未入力" do
+        it "変更が失敗する" do
+          visit edit_user_registration_path
+          fill_in "氏名", with: ""
+          fill_in "メールアドレス", with: "example@example.com"
+          click_button "更新"
+          expect(page).to have_content "氏名を入力してください"
+          expect(current_path).to eq edit_user_registration_path
+        end
+      end
+    end
 
     context "ログアウトをクリック" do
       it "ログアウトが成功する", js: true do
