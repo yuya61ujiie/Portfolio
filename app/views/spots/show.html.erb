@@ -64,10 +64,6 @@
             <td><%= "#{@spot.category_i18n}" %></td>
           </tr>
           <tr>
-            <th scope="row" class="text-center">投稿者</th>
-            <td><%= "#{@spot.user.name}" %></td>
-          </tr>
-          <tr>
             <th scope="row" class="text-center">おすすめ度</th>
             <td><%= "#{@spot.comments.average(:rating)&.round(1)}" %>
               <span class="rate-show" style="color:#ffcc00"><%= "#{@spot.decorate.average_star}" %></span></li>
@@ -76,6 +72,10 @@
           <tr>
             <th scope="row" class="text-center">説明</th>
             <td><%=  "#{@spot.body}" %></td>
+          </tr>
+          <tr>
+            <th scope="row" class="text-center">住所</th>
+            <td><%=  "#{@spot.address}" %></td>
           </tr>
           <tr>
             <th scope="row" class="text-center">マップ</th>

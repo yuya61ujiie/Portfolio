@@ -13,7 +13,7 @@
 
       <div class="col-md-6 mb-3 mx-auto">
         <%= f.label :spot_name %>
-        <%= f.text_field :spot_name, class: "form-control" %>
+        <%= f.text_field :spot_name, id: "autocomplete", class: "form-control" %>
       </div>
       <div class="col-md-6 mb-3 mx-auto">
         <%= f.label :category %>
@@ -21,7 +21,7 @@
       </div>
       <div class="col-md-6 mb-3 mx-auto">
         <%= f.label :address %>
-        <%= f.text_field :address, class: "form-control" %>
+        <%= f.text_field :address, id: "address", class: "form-control" %>
       </div>
       <div class="col-md-6 mb-3 mx-auto">
         <%= f.label :body %>
@@ -41,3 +41,25 @@
     <% end %>
   </div>
 </div>
+
+<script>
+  let autocomplete;
+  function initAutocomplete() {
+    autocomplete = new google.maps.places.Autocomplete(
+      document.getElementById("autocomplete"),
+      {
+        types: ['establishment'],
+        componentRestrictions: { "country": 'JP' },
+      }
+    );
+
+    autocomplete.addListener("place_changed", onPlaceChanged);
+  }
+
+  function onPlaceChanged(){
+    const place = autocomplete.getPlace();
+    document.getElementById("autocomplete").value = place.name;
+    document.getElementById("address").value = place.formatted_address;
+  }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&loading=async&libraries=places&callback=initAutocomplete" async defer></script>

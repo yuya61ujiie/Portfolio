@@ -75,9 +75,9 @@ RSpec.describe "Spots", type: :system do
       context "フォームの入力値が正常" do
         it "新規作成が成功する" do
           visit new_spot_path
-          fill_in "店名", with: "朝活カフェ"
+          fill_in "spot[spot_name]", with: "朝活カフェ"
           select "カフェ", from: "カテゴリ"
-          fill_in "住所", with: "北海道札幌市"
+          fill_in "spot[address]", with: "北海道札幌市"
           fill_in "説明", with: "テスト"
           fill_in "タグ", with: "テスト,tag"
           click_button "登録"
@@ -89,9 +89,9 @@ RSpec.describe "Spots", type: :system do
       context "店名が未記入" do
         it "新規作成が失敗する" do
           visit new_spot_path
-          fill_in "店名", with: nil
+          fill_in "spot[spot_name]", with: nil
           select "カフェ", from: "カテゴリ"
-          fill_in "住所", with: "北海道札幌市"
+          fill_in "spot[address]", with: "北海道札幌市"
           fill_in "説明", with: "テスト"
           fill_in "タグ", with: "テスト,tag"
           click_button "登録"
@@ -106,7 +106,7 @@ RSpec.describe "Spots", type: :system do
         it "編集が成功する" do
           visit edit_spot_path(spot)
           expect(page).to have_content "スポット編集"
-          fill_in "店名", with: "朝活カフェ"
+          fill_in "spot[spot_name]", with: "朝活カフェ"
           click_button "更新"
           expect(page).to have_content "スポットを編集しました"
           expect(page).to have_content "朝活カフェ"
@@ -117,7 +117,7 @@ RSpec.describe "Spots", type: :system do
         it "編集が失敗する" do
           visit edit_spot_path(spot)
           expect(page).to have_content "スポット編集"
-          fill_in "店名", with: nil
+          fill_in "spot[spot_name]", with: nil
           click_button "更新"
           expect(page).to have_content "店名を入力してください"
           expect(current_path).to eq edit_spot_path(spot)
