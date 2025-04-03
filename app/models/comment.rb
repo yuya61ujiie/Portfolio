@@ -4,6 +4,7 @@ class Comment < ApplicationRecord
   validates :scene, presence: true
   validates :start_at, presence: true
   validates :finish_at, presence: true
+  validates :finish_at, comparison: { greater_than_or_equal_to: :start_at }
   validates :rating, presence: true
   validates :title, presence: true, length: { maximum: 255 }
   validates :body, presence: true, length: { maximum: 65_535 }
