@@ -2,7 +2,6 @@ class SpotsController < ApplicationController
   before_action :set_spot, only: %i[ show update destroy ]
   before_action :authenticate_user!, only: %i[ new create edit update destroy bookmarks ]
 
-  # GET /spots or /spots.json
   def index
     if params[:tag_id]
       @spots = Tag.find(params[:tag_id]).spots.includes(:image_attachment, :tags).page(params[:page]).per(10)
@@ -12,25 +11,22 @@ class SpotsController < ApplicationController
     end
   end
 
-  # GET /spots/1 or /spots/1.json
   def show
   end
 
-  # GET /spots/new
   def new
     @spot = Spot.new
   end
 
-  # GET /spots/1/edit
   def edit
     @spot = current_user.spots.find(params[:id])
   end
 
-  # POST /spots or /spots.json
   def create
     @spot = current_user.spots.build(spot_params)
     tag_list = params[:spot][:tag_ids].split(",")
 
+    # スポット画像ない場合、デフォルト画像を表示
     unless @spot.image.attached?
       @spot.image.attach(
         io: File.open("app/assets/images/spot_default.webp"),
@@ -51,7 +47,6 @@ class SpotsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /spots/1 or /spots/1.json
   def update
     tag_list = params[:spot][:tag_ids].split(",")
 
@@ -67,7 +62,6 @@ class SpotsController < ApplicationController
     end
   end
 
-  # DELETE /spots/1 or /spots/1.json
   def destroy
     @spot.destroy!
 
@@ -89,12 +83,10 @@ class SpotsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_spot
       @spot = Spot.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def spot_params
       params.require(:spot).permit(:spot_name, :category, :address, :body, :image).merge(user_id: current_user.id)
     end
