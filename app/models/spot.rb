@@ -31,7 +31,7 @@ class Spot < ApplicationRecord
 
   has_one_attached :image
 
-  enum category: { cafe: 1, work_space: 2, karaoke: 3, other: 4 }
+  enum :category, { cafe: 1, work_space: 2, karaoke: 3, other: 4 }
 
   scope :spot_name_contain, ->(word) { where("spot_name LIKE ?", "%#{word}%") }
   scope :by_category, ->(category) { where(category: category) }
