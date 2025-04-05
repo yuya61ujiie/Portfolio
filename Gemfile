@@ -92,6 +92,8 @@ group :development do
   gem "letter_opener_web"
 
   gem "bullet"
+
+  gem "annotate"
 end
 
 group :test do

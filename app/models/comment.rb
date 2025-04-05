@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :string(255)      not null, primary key
+#  user_id    :bigint           not null
+#  spot_id    :string(255)      not null
+#  scene      :integer          not null
+#  rating     :integer          not null
+#  start_at   :time             not null
+#  finish_at  :time             not null
+#  title      :string(255)      not null
+#  body       :text(65535)      not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Comment < ApplicationRecord
   before_create :set_uuid
 

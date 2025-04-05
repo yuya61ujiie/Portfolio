@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: spots
+#
+#  id         :string(255)      not null, primary key
+#  user_id    :bigint           not null
+#  spot_name  :string(255)      not null
+#  category   :integer          not null
+#  address    :string(255)      not null
+#  body       :text(65535)      not null
+#  latitude   :float(24)
+#  longitude  :float(24)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Spot, type: :model do
