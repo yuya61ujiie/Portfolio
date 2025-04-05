@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: spots
+#
+#  id         :string(255)      not null, primary key
+#  user_id    :bigint           not null
+#  spot_name  :string(255)      not null
+#  category   :integer          not null
+#  address    :string(255)      not null
+#  body       :text(65535)      not null
+#  latitude   :float(24)
+#  longitude  :float(24)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Spot < ApplicationRecord
   before_create :set_uuid
 
@@ -16,7 +31,7 @@ class Spot < ApplicationRecord
 
   has_one_attached :image
 
-  enum category: { cafe: 1, work_space: 2, karaoke: 3, other: 4 }
+  enum :category, { cafe: 1, work_space: 2, karaoke: 3, other: 4 }
 
   scope :spot_name_contain, ->(word) { where("spot_name LIKE ?", "%#{word}%") }
   scope :by_category, ->(category) { where(category: category) }

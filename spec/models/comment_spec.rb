@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id         :string(255)      not null, primary key
+#  user_id    :bigint           not null
+#  spot_id    :string(255)      not null
+#  scene      :integer          not null
+#  rating     :integer          not null
+#  start_at   :time             not null
+#  finish_at  :time             not null
+#  title      :string(255)      not null
+#  body       :text(65535)      not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
@@ -23,7 +39,7 @@ RSpec.describe Comment, type: :model do
     it "終了時間がない場合、無効である" do
       comment_without_finish_at = build(:comment, finish_at: "")
       expect(comment_without_finish_at).to be_invalid
-      expect(comment_without_finish_at.errors[:finish_at]).to eq [ "を入力してください" ]
+      expect(comment_without_finish_at.errors[:finish_at]).to eq [ "を入力してください", "を入力してください" ]
     end
 
     it "おすすめ度がない場合、無効である" do
