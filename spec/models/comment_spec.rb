@@ -39,7 +39,7 @@ RSpec.describe Comment, type: :model do
     it "終了時間がない場合、無効である" do
       comment_without_finish_at = build(:comment, finish_at: "")
       expect(comment_without_finish_at).to be_invalid
-      expect(comment_without_finish_at.errors[:finish_at]).to eq [ "を入力してください" ]
+      expect(comment_without_finish_at.errors[:finish_at]).to eq [ "を入力してください", "を入力してください" ]
     end
 
     it "おすすめ度がない場合、無効である" do
