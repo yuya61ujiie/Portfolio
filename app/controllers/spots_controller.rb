@@ -92,6 +92,6 @@ class SpotsController < ApplicationController
     end
 
     def search_params
-      params[:q]&.permit(:spot_name, :category, :address, :tag_id)
+      params[:q]&.permit(:spot_tag_name, :category, :address)
     end
 end

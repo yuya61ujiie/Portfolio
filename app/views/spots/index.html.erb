@@ -4,21 +4,15 @@
   <%= form_with model: @search_spots_form, scope: :q, url: spots_path, method: :get do |f| %>
 
     <div class="row mb-3 justify-content-center">
-      <div class="col-md-9" data-controller="autocomplete" data-autocomplete-url-value="/spots/search" role="combobox">
-        <%= f.search_field :spot_name, class: 'form-control', data: { autocomplete_target: 'input' }, placeholder: "スポット名" %>
-          <ul class="list-group" style="list-style: none; padding-left: 0;" data-autocomplete-target="results"></ul>
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
       <div class="col-md-3 mb-3">
         <%= f.select :category, Spot.categories.map { |k, v| [t("enums.spot.category.#{k}"), v ]} , { include_blank: "カテゴリ" }, class: 'form-control col-3' %>
       </div>
-      <div class="col-md-3 mb-3">
-        <%= f.search_field :address, class: 'form-control', placeholder: "住所" %>
+      <div class="col-md-3 mb-3" data-controller="autocomplete" data-autocomplete-url-value="/spots/search" role="combobox">
+        <%= f.search_field :spot_tag_name, class: 'form-control', data: { autocomplete_target: 'input' }, placeholder: "キーワード　[ 例：店名　Wi-Fi ]" %>
+          <ul class="list-group" style="list-style: none; padding-left: 0;" data-autocomplete-target="results"></ul>
       </div>
       <div class="col-md-3 mb-3">
-        <%= f.select :tag_id, Tag.pluck(:name, :id) , { include_blank: "タグ" }, class: 'form-control' %>
+        <%= f.search_field :address, class: 'form-control', placeholder: "エリア" %>
       </div>
     </div>
 
@@ -39,8 +33,12 @@
     </div>
 
     <div id="spots">
-      <% @spots.each do |spot| %>
-        <%= render spot %>
+      <% if @spots.present? %>
+        <% @spots.each do |spot| %>
+          <%= render spot %>
+        <% end %>
+      <% else %>
+        <h2 class="text-center mt-5">一致する検索結果がありません</h2>
       <% end %>
     </div>
   </div>
