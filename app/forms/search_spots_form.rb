@@ -2,8 +2,7 @@ class SearchSpotsForm
   include ActiveModel::Model
   include ActiveModel::Attributes
 
-  attribute :spot_name, :string
-  attribute :tag_name, :string
+  attribute :spot_tag_name, :string
   attribute :category, :integer
   attribute :address, :string
   attribute :tag_id, :integer
@@ -11,12 +10,8 @@ class SearchSpotsForm
   def search
     relation = Spot.includes(:image_attachment, :tags).distinct
 
-    spot_name_words.each do |word|
-      relation = relation.spot_name_contain(word)
-    end
-
-    tag_name_words.each do |word|
-      relation = relation.tag_name_contain(word)
+    key_words.each do |word|
+      relation = relation.spot_tag_name_contain(word)
     end
 
     relation = relation.by_category(category) if category.present?
@@ -25,18 +20,13 @@ class SearchSpotsForm
       relation = relation.address_contain(word)
     end
 
-    relation = relation.by_tag(tag_id) if tag_id.present?
     relation
   end
 
   private
 
-    def spot_name_words
-      spot_name.present? ? spot_name.split(nil) : []
-    end
-
-    def tag_name_words
-      tag_name.present? ? tag_name.split(nil) : []
+    def key_words
+      spot_tag_name.present? ? spot_tag_name.split(nil) : []
     end
 
     def address_words

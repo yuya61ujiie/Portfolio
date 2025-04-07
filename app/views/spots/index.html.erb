@@ -5,7 +5,7 @@
 
     <div class="row mb-3 justify-content-center">
       <div class="col-md-9" data-controller="autocomplete" data-autocomplete-url-value="/spots/search" role="combobox">
-        <%= f.search_field :spot_name, class: 'form-control', data: { autocomplete_target: 'input' }, placeholder: "スポット名" %>
+        <%= f.search_field :spot_tag_name, class: 'form-control', data: { autocomplete_target: 'input' }, placeholder: "スポット名" %>
           <ul class="list-group" style="list-style: none; padding-left: 0;" data-autocomplete-target="results"></ul>
       </div>
     </div>
