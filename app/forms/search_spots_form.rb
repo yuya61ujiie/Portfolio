@@ -3,6 +3,7 @@ class SearchSpotsForm
   include ActiveModel::Attributes
 
   attribute :spot_name, :string
+  attribute :tag_name, :string
   attribute :category, :integer
   attribute :address, :string
   attribute :tag_id, :integer
@@ -12,6 +13,10 @@ class SearchSpotsForm
 
     spot_name_words.each do |word|
       relation = relation.spot_name_contain(word)
+    end
+
+    tag_name_words.each do |word|
+      relation = relation.tag_name_contain(word)
     end
 
     relation = relation.by_category(category) if category.present?
@@ -28,6 +33,10 @@ class SearchSpotsForm
 
     def spot_name_words
       spot_name.present? ? spot_name.split(nil) : []
+    end
+
+    def tag_name_words
+      tag_name.present? ? tag_name.split(nil) : []
     end
 
     def address_words

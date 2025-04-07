@@ -18,7 +18,7 @@
         <%= f.search_field :address, class: 'form-control', placeholder: "住所" %>
       </div>
       <div class="col-md-3 mb-3">
-        <%= f.select :tag_id, Tag.pluck(:name, :id) , { include_blank: "タグ" }, class: 'form-control' %>
+        <%= f.search_field :tag_name, class: 'form-control', placeholder: "タグ" %>
       </div>
     </div>
 
