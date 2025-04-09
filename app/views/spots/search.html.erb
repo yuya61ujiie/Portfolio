@@ -1,3 +1,8 @@
 <% @spots.each do |spot| %>
   <li class="list-group-item" role="option"><%= spot.spot_name %></li>
 <% end %>
+<% if @tags.present? %>
+  <% @tags.each do |tag| %>
+    <li class="list-group-item bg-primary-subtle" role="option"><%= tag.name %></li>
+  <% end %>
+<% end %>
