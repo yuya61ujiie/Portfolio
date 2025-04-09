@@ -77,6 +77,7 @@ class SpotsController < ApplicationController
 
   def search
     @spots = Spot.where("spot_name like ?", "%#{params[:q]}%")
+    @tags = Tag.where("name like ?", "%#{params[:q]}%")
     respond_to do |format|
       format.js
     end
